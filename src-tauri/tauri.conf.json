@@ -2,11 +2,11 @@
   "$schema": "https://schema.tauri.app/config/2",
   "productName": "fastcat",
   "version": "0.1.0",
-  "identifier": "ca.fast.next",
+  "identifier": "cat.fast.next",
   "build": {
-    "beforeDevCommand": "yarn dev",
-    "devUrl": "http://localhost:1420",
-    "beforeBuildCommand": "yarn build",
+    "beforeDevCommand": "yarn tarui:pre:dev",
+    "devUrl": "http://localhost:2500",
+    "beforeBuildCommand": "yarn tarui:pre:build",
     "frontendDist": "../dist"
   },
   "app": {

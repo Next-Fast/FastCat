@@ -4,10 +4,13 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "cross-env IS_DEV=true vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "tauri": "tauri"
+    "tarui:pre:dev": "cross-env IS_TAURI=true IS_DEV=true vite",
+    "tarui:pre:build": "cross-env IS_TAURI=true tsc && vite build",
+    "tauri:dev": "tauri dev",
+    "tauri:build": "tauri build"
   },
   "dependencies": {
     "@tauri-apps/api": "^2",
@@ -24,6 +27,7 @@
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.15",
     "typescript": "^5.2.2",
-    "vite": "^6.0.1"
+    "vite": "^6.0.1",
+    "cross-env": "^7.0.3"
   }
 }
