@@ -1,12 +1,34 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import AutoImport from 'unplugin-auto-import/vite'
+import svgr from "vite-plugin-svgr";
+import tsconfigPaths from "vite-tsconfig-paths";
 
 // @ts-expect-error process is a nodejs global
 const host = process.env.TAURI_DEV_HOST;
 
 // https://vitejs.dev/config/
 export default defineConfig(async () => ({
-  plugins: [react()],
+  plugins: 
+  [
+    react(
+      {
+        babel: {
+          plugins: ['babel-plugin-react-compiler']
+        }
+      }
+    ),
+    AutoImport({
+      include: [
+        /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
+      ],
+      imports: ['react'],
+      dts: './src/auto-imports.d.ts',
+      dirs: ['src/components'],
+    }),
+    svgr(),
+    tsconfigPaths()
+  ],
   envPrefix: ["VITE_", "IS_"],
 
   // Vite options tailored for Tauri development and only applied in `tauri dev` or `tauri build`
