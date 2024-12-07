@@ -6,7 +6,7 @@ import zh_cn from "@/assets/Locales/zh-cn.json";
 const languageResource = {
     en: { translation : en },
     zh: { translation : zh_cn }
-}
+};
 
 i18n.use(initReactI18next)
     .init({
@@ -17,4 +17,4 @@ i18n.use(initReactI18next)
         interpolation: {
             escapeValue: false // react already safes from xss => https://www.i18next.com/translation-function/interpolation#unescape
         }
-    })
+    });
