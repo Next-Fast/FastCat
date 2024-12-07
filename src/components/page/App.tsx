@@ -1,6 +1,6 @@
-import reactLogo from "./assets/react.svg";
-import "./App.css";
-import { Invoke_Deault } from "./lib/utils/tarui-utlis";
+import reactLogo from "@/assets/react.svg";
+import "@/styles/App.css";
+import { Invoke_Deault } from "@utils/tarui-utlis";
 import { useState } from "react";
 
 function App() {
