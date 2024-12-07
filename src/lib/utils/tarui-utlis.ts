@@ -11,7 +11,7 @@ export async function Invoke_Command<T>(command : Tauri_Command, args? : InvokeA
     return await invoke<T>(command as string, args, options)
 }
 
-export async function Invoke_CommandOrDeault<T>(command: Tauri_Command, defaultValue : T, args?: InvokeArgs, options?: InvokeOptions) : Promise<T>
+export async function Invoke_Deault<T>(command: Tauri_Command, defaultValue : T, args?: InvokeArgs, options?: InvokeOptions) : Promise<T>
 {
     return await Invoke_Command<T>(command, args, options) ?? defaultValue;
 }
