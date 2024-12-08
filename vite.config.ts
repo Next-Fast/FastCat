@@ -33,6 +33,8 @@ export default defineConfig(async () => ({
     TanStackRouterVite(),
     eslint(
       {
+        include: ['src/**/*.{ts,tsx}'],
+        exclude: ['node_modules/**/*'],
         dev: false,
         build: false,
       }

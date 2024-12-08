@@ -23,3 +23,5 @@ export enum ModDownloadSource {
     NekoLibrary = "nekolibrary",
     Thunderstore = "thunderstore",
 }
+
+export type SuprrortLanguage = 'en' | 'zh';

@@ -1,7 +1,7 @@
-import { LoaderType } from "."
+import { LoaderType, SuprrortLanguage } from "."
 
 export type ManagerConfig = {
-    
+    lang : SuprrortLanguage,
 }
 
 export type GameConfig = {
