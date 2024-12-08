@@ -6,9 +6,6 @@
 // biome-ignore lint: disable
 export {}
 declare global {
-  const App: typeof import('./components/page/App')['default']
-  const Is_Dev: typeof import('./AppEnv')['Is_Dev']
-  const Is_Tauri: typeof import('./AppEnv')['Is_Tauri']
   const createRef: typeof import('react')['createRef']
   const forwardRef: typeof import('react')['forwardRef']
   const lazy: typeof import('react')['lazy']

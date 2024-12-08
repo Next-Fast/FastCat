@@ -4,7 +4,7 @@ import AutoImport from 'unplugin-auto-import/vite'
 import svgr from "vite-plugin-svgr";
 import tsconfigPaths from "vite-tsconfig-paths";
 import { TanStackRouterVite } from '@tanstack/router-plugin/vite'
-import eslint from 'vite-plugin-eslint'
+import eslint from 'vite-plugin-eslint2'
 
 // @ts-expect-error process is a nodejs global
 const host = process.env.TAURI_DEV_HOST;
@@ -31,10 +31,12 @@ export default defineConfig(async () => ({
     svgr(),
     tsconfigPaths(),
     TanStackRouterVite(),
-    eslint({
-      failOnWarning: false,
-      failOnError: false,
-    })
+    eslint(
+      {
+        dev: false,
+        build: false,
+      }
+    )
   ],
   envPrefix: ["VITE_", "IS_"],
 

@@ -1,3 +1,5 @@
+export * from "./config"
+
 export enum ManagerMode {
     SingleVersion = "single",
     MutlingVersion = "mutling",
@@ -14,4 +16,10 @@ export enum StorePlatrom {
 export enum LoaderType {
     NextBepLoader = "nextBepLoader",
     BepInEx = "bepInEx",
+}
+
+export enum ModDownloadSource {
+    Github = "github",
+    NekoLibrary = "nekolibrary",
+    Thunderstore = "thunderstore",
 }
