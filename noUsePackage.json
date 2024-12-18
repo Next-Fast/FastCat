@@ -1,0 +1,6 @@
+{
+    "package": {
+        "@vitejs/plugin-react": "^4.3.4",
+        "babel-plugin-react-compiler": "^19.0.0-beta-df7b47d-20241124"
+    }
+}

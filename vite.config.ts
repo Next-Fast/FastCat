@@ -1,5 +1,6 @@
 import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
+/* import react from "@vitejs/plugin-react"; */
+import swcReact from "@vitejs/plugin-react-swc";
 import AutoImport from 'unplugin-auto-import/vite'
 import svgr from "vite-plugin-svgr";
 import tsconfigPaths from "vite-tsconfig-paths";
@@ -13,13 +14,16 @@ const host = process.env.TAURI_DEV_HOST;
 export default defineConfig(async () => ({
   plugins: 
   [
-    react(
+/*     react(
       {
         babel: {
           plugins: ['babel-plugin-react-compiler']
         }
       }
-    ),
+    ), */
+    swcReact({
+      
+    }),
     AutoImport({
       include: [
         /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx

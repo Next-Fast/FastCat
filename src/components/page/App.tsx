@@ -1,4 +1,3 @@
-import reactLogo from "@/assets/react.svg";
 import "@/styles/App.css";
 import { Invoke_Deault } from "@utils/tarui-utlis";
 import { useState } from "react";
@@ -24,7 +23,7 @@ function App() {
           <img src="/tauri.svg" className="logo tauri" alt="Tauri logo" />
         </a>
         <a href="https://reactjs.org" target="_blank" rel="noopener">
-          <img src={reactLogo} className="logo react" alt="React logo" />
+          <img src="/react.svg" className="logo react" alt="React logo" />
         </a>
       </div>
       <p>Click on the Tauri, Vite, and React logos to learn more.</p>
