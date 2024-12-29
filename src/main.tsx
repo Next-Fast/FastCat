@@ -1,12 +1,14 @@
 // Style
-import "./styles/tailwindcss.css"
+import "./styles/tailwindcss.css";
+import './styles/main.css';
+import './styles/scss/module.scss';
 
 // React
 import React from "react";
 import ReactDOM from "react-dom/client";
 
 // Router
-import { routeTree } from './routeTree.gen'
+import { routeTree } from './routeTree.gen';
 import { createRouter, RouterProvider } from "@tanstack/react-router";
 
 // Create a new router instance

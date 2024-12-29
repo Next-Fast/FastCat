@@ -10,6 +10,9 @@ export default [
     rules: {
       
     },
+    plugins: [
+      "react-compiler"
+    ]
   },
   { languageOptions: { globals: globals.browser } },
   pluginJs.configs.recommended,

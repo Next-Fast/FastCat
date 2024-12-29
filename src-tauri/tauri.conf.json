@@ -4,9 +4,9 @@
   "version": "0.1.0",
   "identifier": "cat.fast.next",
   "build": {
-    "beforeDevCommand": "yarn tarui:pre:dev",
+    "beforeDevCommand": "pnpm tarui:pre:dev",
     "devUrl": "http://localhost:2500",
-    "beforeBuildCommand": "yarn tarui:pre:build",
+    "beforeBuildCommand": "pnpm tarui:pre:build",
     "frontendDist": "../dist"
   },
   "app": {
