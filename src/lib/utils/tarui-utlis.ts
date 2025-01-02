@@ -1,7 +1,10 @@
+export * from "../constant/tauri-constant"
+export * from "../hooks/use-swr-tauri"
+
 import { invoke, InvokeArgs, InvokeOptions } from "@tauri-apps/api/core";
 import { Is_Tauri } from "../../AppEnv";
 
-type Tauri_Command = "greet" | "Get";
+export type Tauri_Command = "greet" | "Get" | "IsFirst" | "GetModList" | "GetModInfo" | "GetBepInExInfo" | "GetGameInfo" | "GetGamePath";
 
 export async function Invoke_Command<T>(command : Tauri_Command, args? : InvokeArgs, options? : InvokeOptions) : Promise<T | undefined>
 {
@@ -14,4 +17,13 @@ export async function Invoke_Command<T>(command : Tauri_Command, args? : InvokeA
 export async function Invoke_Deault<T>(command: Tauri_Command, defaultValue : T, args?: InvokeArgs, options?: InvokeOptions) : Promise<T>
 {
     return await Invoke_Command<T>(command, args, options) ?? defaultValue;
+}
+
+export async function Invoke<T>(command: string, args?: InvokeArgs, options?: InvokeOptions) : Promise<T | undefined>
+{
+    var cmd = command as Tauri_Command;
+    if (!cmd)
+        return undefined;
+
+    return await Invoke_Command<T>(cmd, args, options)
 }
