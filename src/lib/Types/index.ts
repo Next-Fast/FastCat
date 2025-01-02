@@ -1,4 +1,5 @@
 export * from "./config"
+export * from "./data"
 
 export enum ManagerMode {
     SingleVersion = "single",

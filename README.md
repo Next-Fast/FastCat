@@ -41,3 +41,10 @@ pnpm tauri:dev
 # 桌面构建
 pnpm tauri:build
 ~~~
+
+# 参考
+> 新手在学习ing    
+
+- [Clash NyanPasu](https://github.com/libnyanpasu/clash-nyanpasu)   
+- [Gale](https://github.com/Kesomannen/gale)   
+- [NextNapCatUI](https://github.com/bietiaop/NextNapCatWebUI)

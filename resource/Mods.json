@@ -1,0 +1,14 @@
+[
+    {
+        "Name": "Mod1",
+        "LatestVersion": "1.0.0",
+        "Description": "This is a mod",
+        "Author": "Author1",
+        "Languages": [],
+        "Dependencies": [],
+        "Loader": "BepInEx",
+        "DownloadSource": "",
+        "DownloadLink": "",
+        "MarkdownPath": ""
+    }
+]

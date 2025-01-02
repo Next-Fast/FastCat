@@ -6,6 +6,8 @@
 // biome-ignore lint: disable
 export {}
 declare global {
+  const Sidebar: typeof import('./components/SiderBar')['Sidebar']
+  const SiderBar: typeof import('./components/SiderBar')['default']
   const createRef: typeof import('react')['createRef']
   const forwardRef: typeof import('react')['forwardRef']
   const lazy: typeof import('react')['lazy']

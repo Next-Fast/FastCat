@@ -1,0 +1,19 @@
+[
+    {
+        "Version": "6.0.0-pre.2",
+        "IsRelease": true,
+        "BuildHash": "5362580"
+    },
+    {
+        "BuildId": "729",
+        "BuildHash": "35f6b1b"
+    },
+    {
+        "BuildId": "725",
+        "BuildHash": "e1974e2"
+    },
+    {
+        "BuildId": "700",
+        "BuildHash": "5a32424"
+    }
+]
