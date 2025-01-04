@@ -7,7 +7,7 @@ export function MainLayout({ children }: { children: React.ReactNode }) {
         <div className={clsx('bg-gradient-to-t from-sky-500 to-sky-200', style.layout)}>
             <SiderBar/>
 
-            <div className={style.container}>
+            <div className={clsx(style.container, 'ml-1')}>
                 <ErrorBoundary FallbackComponent={ErrorFallback}>
                     {children}
                 </ErrorBoundary>
