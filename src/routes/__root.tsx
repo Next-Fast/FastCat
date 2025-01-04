@@ -1,49 +1,12 @@
 import { TanStackRouterDevtools } from '@/lib/utils/route-utils'
-import { NavigateOptions, Outlet, ToOptions, createRootRoute, useRouter } from '@tanstack/react-router'
+import { NavigateOptions, ToOptions, createRootRoute, useRouter } from '@tanstack/react-router'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { SWRConfig } from 'swr'
 import { NextUIProvider } from "@nextui-org/system"
-import styles from '@/styles/scss/__root.module.scss'
-import Sidebar from '@/components/SiderBar'
-import { clsx } from 'clsx'
-import { ErrorBoundary, FallbackProps } from 'react-error-boundary'
+import { MainLayout } from '@/components/Layouts/MainLayout'
+import { AnimeOutlet } from '@/components/AnimeOutlet'
 
 const queryClient = new QueryClient();
-
-function ErrorFallback({ error, resetErrorBoundary } : FallbackProps) {
-  return (
-    <div role="alert">
-      <p>Something went wrong:</p>
-      <pre>{error.message}</pre>
-      <button onClick={resetErrorBoundary}>Try again</button>
-    </div>
-  )
-}
-
-function MainLayout({ children } : { children: React.ReactNode }) {
-  const isHome = location.pathname === '/';
-  
-  return (
-    <div className={styles.layout}>
-      <div className={clsx(styles.SiderBarLayout, "flex flex-col justify-between")}>
-        <Sidebar />
-      </div>
-      <div className="flex flex-col w-full h-full">
-        <ErrorBoundary FallbackComponent={ErrorFallback}>
-          {children}
-        </ErrorBoundary>
-      </div>
-    </div>
-  )
-}
-
-function AnimeOutlet() {
-  return (
-    <div>
-      <Outlet />
-    </div>
-  )
-}
 
 declare module "@react-types/shared" {
   interface RouterConfig {

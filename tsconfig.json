@@ -31,10 +31,15 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "@Dir/*": ["./*"],
+      "@Root/*": ["./*"],
       "@lib/*": ["./src/lib/*"],
       "@components/*": ["./src/components/*"],
       "@utils/*": ["./src/lib/utils/*"],
+      "@styles/*": ["./src/styles/*"],
+      "@hooks/*": ["./src/lib/hooks/*"],
+      "@types/*": ["./src/lib/Types/*"],
+      "@constant/*": ["./src/lib/constant/*"],
+      "@assets/*": ["./src/assets/*"]
     }
   },
   "include": ["src", "auto-import.d.ts"],

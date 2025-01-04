@@ -46,9 +46,9 @@ export default defineConfig(async () => {
           include: [
             /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
           ],
-          imports: ['react'],
+          imports: ['react', 'jotai', 'react-i18next', 'ahooks'],
           dts: './src/auto-imports.d.ts',
-          dirs: ['src/components'],
+          dirs: ['src/components/'],
         }),
         svgr(),
         tsconfigPaths(),

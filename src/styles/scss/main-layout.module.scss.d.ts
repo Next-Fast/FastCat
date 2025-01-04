@@ -1,5 +1,5 @@
 declare const classNames: {
   readonly layout: "layout";
-  readonly SiderBarLayout: "SiderBarLayout";
+  readonly container: "container";
 };
 export default classNames;
