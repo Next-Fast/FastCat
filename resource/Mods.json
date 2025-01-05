@@ -4,7 +4,7 @@
         "LatestVersion": "1.0.0",
         "Description": "This is a mod",
         "Author": "Author1",
-        "Languages": [],
+        "Languages": "en",
         "Dependencies": [],
         "Loader": "BepInEx",
         "DownloadSource": "",

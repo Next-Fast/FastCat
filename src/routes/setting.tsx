@@ -1,3 +1,4 @@
+import { PageLayout, PageLayoutProps } from '@/components/Layouts/PageLayout'
 import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/setting')({
@@ -5,5 +6,13 @@ export const Route = createFileRoute('/setting')({
 })
 
 function RouteComponent() {
-  return <div>Hello "/setting"!</div>
+  const _props: PageLayoutProps = {
+    title: 'Setting'
+  }
+
+  return (
+    <PageLayout props={_props}>
+      <div>Setting</div>
+    </PageLayout>
+  )
 }

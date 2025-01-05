@@ -22,6 +22,7 @@
     "@nextui-org/listbox": "^2.3.8",
     "@nextui-org/system": "^2.4.5",
     "@nextui-org/theme": "^2.4.4",
+    "@radix-ui/react-slot": "^1.1.1",
     "@tanstack/react-query": "^5.62.14",
     "@tanstack/react-router": "^1.95.0",
     "@tauri-apps/api": "^2.2.0",
@@ -29,6 +30,7 @@
     "@tauri-apps/plugin-os": "^2.2.0",
     "@tauri-apps/plugin-shell": "^2.2.0",
     "ahooks": "^3.8.4",
+    "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "framer-motion": "^11.15.0",
     "i18next": "^24.2.0",
@@ -41,6 +43,7 @@
     "swr": "^2.3.0",
     "tailwind-merge": "^2.6.0",
     "tailwind-variants": "^0.3.0",
+    "tailwindcss-animate": "^1.0.7",
     "zod": "^3.24.1"
   },
   "devDependencies": {

@@ -12,14 +12,23 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as SettingImport } from './routes/setting'
+import { Route as ModsImport } from './routes/mods'
 import { Route as LayoutImport } from './routes/_layout'
 import { Route as IndexImport } from './routes/index'
+import { Route as EditServerImport } from './routes/edit/server'
+import { Route as EditModConfigImport } from './routes/edit/mod-config'
 
 // Create/Update Routes
 
 const SettingRoute = SettingImport.update({
   id: '/setting',
   path: '/setting',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ModsRoute = ModsImport.update({
+  id: '/mods',
+  path: '/mods',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -31,6 +40,18 @@ const LayoutRoute = LayoutImport.update({
 const IndexRoute = IndexImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const EditServerRoute = EditServerImport.update({
+  id: '/edit/server',
+  path: '/edit/server',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const EditModConfigRoute = EditModConfigImport.update({
+  id: '/edit/mod-config',
+  path: '/edit/mod-config',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -52,11 +73,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutImport
       parentRoute: typeof rootRoute
     }
+    '/mods': {
+      id: '/mods'
+      path: '/mods'
+      fullPath: '/mods'
+      preLoaderRoute: typeof ModsImport
+      parentRoute: typeof rootRoute
+    }
     '/setting': {
       id: '/setting'
       path: '/setting'
       fullPath: '/setting'
       preLoaderRoute: typeof SettingImport
+      parentRoute: typeof rootRoute
+    }
+    '/edit/mod-config': {
+      id: '/edit/mod-config'
+      path: '/edit/mod-config'
+      fullPath: '/edit/mod-config'
+      preLoaderRoute: typeof EditModConfigImport
+      parentRoute: typeof rootRoute
+    }
+    '/edit/server': {
+      id: '/edit/server'
+      path: '/edit/server'
+      fullPath: '/edit/server'
+      preLoaderRoute: typeof EditServerImport
       parentRoute: typeof rootRoute
     }
   }
@@ -67,41 +109,69 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '': typeof LayoutRoute
+  '/mods': typeof ModsRoute
   '/setting': typeof SettingRoute
+  '/edit/mod-config': typeof EditModConfigRoute
+  '/edit/server': typeof EditServerRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '': typeof LayoutRoute
+  '/mods': typeof ModsRoute
   '/setting': typeof SettingRoute
+  '/edit/mod-config': typeof EditModConfigRoute
+  '/edit/server': typeof EditServerRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
   '/_layout': typeof LayoutRoute
+  '/mods': typeof ModsRoute
   '/setting': typeof SettingRoute
+  '/edit/mod-config': typeof EditModConfigRoute
+  '/edit/server': typeof EditServerRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '' | '/setting'
+  fullPaths:
+    | '/'
+    | ''
+    | '/mods'
+    | '/setting'
+    | '/edit/mod-config'
+    | '/edit/server'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '' | '/setting'
-  id: '__root__' | '/' | '/_layout' | '/setting'
+  to: '/' | '' | '/mods' | '/setting' | '/edit/mod-config' | '/edit/server'
+  id:
+    | '__root__'
+    | '/'
+    | '/_layout'
+    | '/mods'
+    | '/setting'
+    | '/edit/mod-config'
+    | '/edit/server'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   LayoutRoute: typeof LayoutRoute
+  ModsRoute: typeof ModsRoute
   SettingRoute: typeof SettingRoute
+  EditModConfigRoute: typeof EditModConfigRoute
+  EditServerRoute: typeof EditServerRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   LayoutRoute: LayoutRoute,
+  ModsRoute: ModsRoute,
   SettingRoute: SettingRoute,
+  EditModConfigRoute: EditModConfigRoute,
+  EditServerRoute: EditServerRoute,
 }
 
 export const routeTree = rootRoute
@@ -116,7 +186,10 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/_layout",
-        "/setting"
+        "/mods",
+        "/setting",
+        "/edit/mod-config",
+        "/edit/server"
       ]
     },
     "/": {
@@ -125,8 +198,17 @@ export const routeTree = rootRoute
     "/_layout": {
       "filePath": "_layout.tsx"
     },
+    "/mods": {
+      "filePath": "mods.tsx"
+    },
     "/setting": {
       "filePath": "setting.tsx"
+    },
+    "/edit/mod-config": {
+      "filePath": "edit/mod-config.tsx"
+    },
+    "/edit/server": {
+      "filePath": "edit/server.tsx"
     }
   }
 }

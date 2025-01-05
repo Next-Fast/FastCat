@@ -8,9 +8,10 @@ export default {
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+  	extend: {
+  	
+  	}
   },
-  darkMode: "class",
-  plugins: [nextui()],
+  plugins: [nextui(), require("tailwindcss-animate")],
 }
 
