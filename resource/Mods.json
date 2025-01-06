@@ -1,14 +1,22 @@
 [
     {
-        "Name": "Mod1",
-        "LatestVersion": "1.0.0",
+        "Name": "TheOtherRoles",
+        "LatestVersion": "4.6.0",
+        "Versions": [
+            "4.6.0"
+        ],
         "Description": "This is a mod",
-        "Author": "Author1",
+        "Author": "TheOtherRolesAU",
         "Languages": "en",
-        "Dependencies": [],
+        "Dependencies": [
+            {
+                "Name": "Reactor",
+                "Version": "2.2.0",
+                "IsMod": true
+            }
+        ],
         "Loader": "BepInEx",
-        "DownloadSource": "",
-        "DownloadLink": "",
-        "MarkdownPath": ""
+        "DownloadSource": "github",
+        "DownloadLink": "https://github.com/TheOtherRolesAU/TheOtherRoles/releases/download/v<Version>/TheOtherRoles.dll"
     }
 ]

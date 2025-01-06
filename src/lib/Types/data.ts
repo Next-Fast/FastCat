@@ -3,14 +3,23 @@ import { LoaderType, ModDownloadSource, SuprrortLanguage } from ".";
 export interface ModInfo {
     Name: string;
     LatestVersion: string;
+    Versions: string[];
     Description: string;
     Author: string;
     Languages: SuprrortLanguage[] | SuprrortLanguage;
-    Dependencies?: ModInfo[];
+    Dependencies?: DependencyInfo[];
     Loader: LoaderType;
     DownloadSource: ModDownloadSource;
     DownloadLink?: string;
     MarkdownPath?: string;
+}
+
+export interface DependencyInfo {
+    Name: string;
+    Version: string;
+    IsMod: boolean;
+
+    TargetVersions?: string[];
 }
 
 export interface BepInExInfo {
