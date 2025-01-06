@@ -12,6 +12,9 @@ import { createRouter, RouterProvider } from "@tanstack/react-router";
 // i18n
 import '@lib/locale'
 
+// log
+/* import '@utils/log-utils' */
+
 // Create a new router instance
 const router = createRouter({ 
   routeTree,
