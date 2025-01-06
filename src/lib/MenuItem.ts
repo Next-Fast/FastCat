@@ -5,7 +5,8 @@ import { MdExtension, MdHome, MdInventory, MdSettings } from 'react-icons/md'
 interface MenuItem {
     name: string,
     url: Href,
-    icon?: IconType
+    icon?: IconType,
+    i18Key?: string
 }
 
 
@@ -13,7 +14,8 @@ export const DefaultMenuItems: MenuItem[] = [
     {
         name: 'Home',
         url: '/',
-        icon: MdHome
+        icon: MdHome,
+        i18Key: 'Home.title'
     },
     {
         name: 'Mods',
@@ -28,6 +30,7 @@ export const DefaultMenuItems: MenuItem[] = [
     {
         name: 'Setting',
         url: '/setting',
-        icon: MdSettings
+        icon: MdSettings,
+        i18Key: 'Setting.title'
     }
 ]

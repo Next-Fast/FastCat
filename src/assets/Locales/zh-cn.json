@@ -1,8 +1,10 @@
 {
     "Home": {
-        "title": "主页"
+        "title": "主页",
+        "StartVanild": "启动原版",
+        "StartModed": "启动模组"
     },
-    "setting": {
+    "Setting": {
         "title": "设置"
     }
 }

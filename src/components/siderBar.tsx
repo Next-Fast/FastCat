@@ -7,6 +7,7 @@ import { Divider } from "@nextui-org/divider";
 export function SiderBar() {
   const nav = useNavigate();
   const path = useLocation().pathname;
+  const { t } = useTranslation();
 
   return (
     <div className='sider-bar ml-[3.5rem] mt-[3.5rem] flex-col flex items-center 
@@ -28,7 +29,7 @@ export function SiderBar() {
             }
           startContent={item.icon && <item.icon className='text-[1.2rem] flex-shrink-0 -mr-2'/>}
           >
-            {item.name}
+            {item.i18Key ? t(item.i18Key) : item.name}
           </Button>
         )
       })}

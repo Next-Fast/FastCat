@@ -1,9 +1,11 @@
 {
     "Home":
     {
-        "title": "Home"
+        "title": "Home",
+        "StartVanild": "Start Vanilla",
+        "StartModed": "Start Modded"
     },
-    "setting":
+    "Setting":
     {
         "title": "Setting"
     }

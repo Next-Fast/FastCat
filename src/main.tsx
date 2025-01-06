@@ -9,6 +9,9 @@ import ReactDOM from "react-dom/client";
 import { routeTree } from '@/routeTree.gen';
 import { createRouter, RouterProvider } from "@tanstack/react-router";
 
+// i18n
+import '@lib/locale'
+
 // Create a new router instance
 const router = createRouter({ 
   routeTree,
