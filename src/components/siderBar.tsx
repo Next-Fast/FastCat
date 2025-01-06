@@ -26,7 +26,7 @@ export function SiderBar() {
             () =>
             nav({to: item.url})
             }
-          startContent={item.icon && <item.icon className='text-xl'/>}
+          startContent={item.icon && <item.icon className='text-[1.2rem] flex-shrink-0 -mr-2'/>}
           >
             {item.name}
           </Button>

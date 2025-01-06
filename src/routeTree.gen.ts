@@ -15,8 +15,7 @@ import { Route as SettingImport } from './routes/setting'
 import { Route as ModsImport } from './routes/mods'
 import { Route as LayoutImport } from './routes/_layout'
 import { Route as IndexImport } from './routes/index'
-import { Route as EditServerImport } from './routes/edit/server'
-import { Route as EditModConfigImport } from './routes/edit/mod-config'
+import { Route as ExtensionIndexImport } from './routes/extension/index'
 
 // Create/Update Routes
 
@@ -43,15 +42,9 @@ const IndexRoute = IndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const EditServerRoute = EditServerImport.update({
-  id: '/edit/server',
-  path: '/edit/server',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const EditModConfigRoute = EditModConfigImport.update({
-  id: '/edit/mod-config',
-  path: '/edit/mod-config',
+const ExtensionIndexRoute = ExtensionIndexImport.update({
+  id: '/extension/',
+  path: '/extension/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -87,18 +80,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SettingImport
       parentRoute: typeof rootRoute
     }
-    '/edit/mod-config': {
-      id: '/edit/mod-config'
-      path: '/edit/mod-config'
-      fullPath: '/edit/mod-config'
-      preLoaderRoute: typeof EditModConfigImport
-      parentRoute: typeof rootRoute
-    }
-    '/edit/server': {
-      id: '/edit/server'
-      path: '/edit/server'
-      fullPath: '/edit/server'
-      preLoaderRoute: typeof EditServerImport
+    '/extension/': {
+      id: '/extension/'
+      path: '/extension'
+      fullPath: '/extension'
+      preLoaderRoute: typeof ExtensionIndexImport
       parentRoute: typeof rootRoute
     }
   }
@@ -111,8 +97,7 @@ export interface FileRoutesByFullPath {
   '': typeof LayoutRoute
   '/mods': typeof ModsRoute
   '/setting': typeof SettingRoute
-  '/edit/mod-config': typeof EditModConfigRoute
-  '/edit/server': typeof EditServerRoute
+  '/extension': typeof ExtensionIndexRoute
 }
 
 export interface FileRoutesByTo {
@@ -120,8 +105,7 @@ export interface FileRoutesByTo {
   '': typeof LayoutRoute
   '/mods': typeof ModsRoute
   '/setting': typeof SettingRoute
-  '/edit/mod-config': typeof EditModConfigRoute
-  '/edit/server': typeof EditServerRoute
+  '/extension': typeof ExtensionIndexRoute
 }
 
 export interface FileRoutesById {
@@ -130,29 +114,15 @@ export interface FileRoutesById {
   '/_layout': typeof LayoutRoute
   '/mods': typeof ModsRoute
   '/setting': typeof SettingRoute
-  '/edit/mod-config': typeof EditModConfigRoute
-  '/edit/server': typeof EditServerRoute
+  '/extension/': typeof ExtensionIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | ''
-    | '/mods'
-    | '/setting'
-    | '/edit/mod-config'
-    | '/edit/server'
+  fullPaths: '/' | '' | '/mods' | '/setting' | '/extension'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '' | '/mods' | '/setting' | '/edit/mod-config' | '/edit/server'
-  id:
-    | '__root__'
-    | '/'
-    | '/_layout'
-    | '/mods'
-    | '/setting'
-    | '/edit/mod-config'
-    | '/edit/server'
+  to: '/' | '' | '/mods' | '/setting' | '/extension'
+  id: '__root__' | '/' | '/_layout' | '/mods' | '/setting' | '/extension/'
   fileRoutesById: FileRoutesById
 }
 
@@ -161,8 +131,7 @@ export interface RootRouteChildren {
   LayoutRoute: typeof LayoutRoute
   ModsRoute: typeof ModsRoute
   SettingRoute: typeof SettingRoute
-  EditModConfigRoute: typeof EditModConfigRoute
-  EditServerRoute: typeof EditServerRoute
+  ExtensionIndexRoute: typeof ExtensionIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
@@ -170,8 +139,7 @@ const rootRouteChildren: RootRouteChildren = {
   LayoutRoute: LayoutRoute,
   ModsRoute: ModsRoute,
   SettingRoute: SettingRoute,
-  EditModConfigRoute: EditModConfigRoute,
-  EditServerRoute: EditServerRoute,
+  ExtensionIndexRoute: ExtensionIndexRoute,
 }
 
 export const routeTree = rootRoute
@@ -188,8 +156,7 @@ export const routeTree = rootRoute
         "/_layout",
         "/mods",
         "/setting",
-        "/edit/mod-config",
-        "/edit/server"
+        "/extension/"
       ]
     },
     "/": {
@@ -204,11 +171,8 @@ export const routeTree = rootRoute
     "/setting": {
       "filePath": "setting.tsx"
     },
-    "/edit/mod-config": {
-      "filePath": "edit/mod-config.tsx"
-    },
-    "/edit/server": {
-      "filePath": "edit/server.tsx"
+    "/extension/": {
+      "filePath": "extension/index.tsx"
     }
   }
 }
