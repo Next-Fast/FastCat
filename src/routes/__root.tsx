@@ -1,5 +1,5 @@
-import { TanStackRouterDevtools } from '@/lib/utils/route-utils'
-import { NavigateOptions, ToOptions, createRootRoute, useRouter } from '@tanstack/react-router'
+import { TanStackRouterDevtools/* , UseMainLayoutPaths  */} from '@/lib/utils/route-utils'
+import { NavigateOptions, ToOptions, createRootRoute, /* useLocation, */ useRouter } from '@tanstack/react-router'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { SWRConfig } from 'swr'
 import { NextUIProvider } from "@nextui-org/system"
@@ -21,6 +21,11 @@ export const Route = createRootRoute({
 
 function RootComponent() {
   const router = useRouter();
+/*   const path = useLocation().pathname; */
+  const Layout = /* UseMainLayoutPaths.
+                  findLast(item => path.startsWith(item.path))?.element
+                  ??  */
+                  MainLayout;
 
   return (
     <> 
@@ -30,9 +35,9 @@ function RootComponent() {
             navigate={(to, options) => router.navigate({ to, ...options })}
             useHref={(to) => router.buildLocation({ to }).href}
           >
-            <MainLayout>
+            <Layout>
               <AnimeOutlet />
-            </MainLayout>
+            </Layout>
           </NextUIProvider>
         </SWRConfig>
       </QueryClientProvider>

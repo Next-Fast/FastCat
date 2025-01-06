@@ -1,5 +1,5 @@
 import { Vite_PROD } from '@/AppEnv';
-import React from 'react';
+import React, { FC }  from 'react';
 
 export const TanStackRouterDevtools =
         Vite_PROD
@@ -12,3 +12,7 @@ export const TanStackRouterDevtools =
                 // default: res.TanStackRouterDevtoolsPanel
             })),
         )
+
+export const UseMainLayoutPaths: { path: string, element: FC}[] = [
+
+];

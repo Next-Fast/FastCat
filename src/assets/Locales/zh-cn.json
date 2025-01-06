@@ -1,10 +1,10 @@
 {
-    "Home": {
-        "title": "主页",
-        "StartVanild": "启动原版",
-        "StartModed": "启动模组"
-    },
-    "Setting": {
-        "title": "设置"
-    }
+  "Home": {
+    "title": "主页",
+    "StartVanild": "开始香草",
+    "StartModed": "启动模组"
+  },
+  "Setting": {
+    "title": "设置"
+  }
 }
