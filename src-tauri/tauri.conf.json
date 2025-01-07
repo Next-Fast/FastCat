@@ -49,6 +49,9 @@
       "../public/icons/128x128.png",
       "../public/icons/128x128@2x.png"
     ],
-    "copyright": "Copyright © 2025 Next-Fast"
+    "copyright": "Copyright © 2025 Next-Fast",
+    "category": "DeveloperTool",
+    "shortDescription": "Fast Neko! Ciallo～(∠・ω< )⌒★",
+    "longDescription": "Fast Neko! Ciallo～(∠・ω< )⌒★"
   }
 }
