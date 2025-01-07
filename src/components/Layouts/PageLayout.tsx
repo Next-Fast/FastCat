@@ -22,10 +22,12 @@ function ImageContainer({ image }: { image: string | undefined }) {
 }
 
 export function PageLayout({ props, children }: { props: PageLayoutProps, children: React.ReactNode }) {
+    const { t } = useTranslation();
+
     return (
         <div className="Page Layout flex flex-col">
             <header className="Page Header">
-                <h1 className="font-sans text-3xl mt-4 ml-7">{props.title}</h1>
+                <h1 className="font-sans text-3xl mt-4 ml-7">{t(props.title)}</h1>
             </header>
 
             <div className={clsx('Page Main relative rounded-3xl ml-3 mt-1 w-[95%] h-[31.35rem]',

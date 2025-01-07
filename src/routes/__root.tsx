@@ -26,6 +26,8 @@ function RootComponent() {
                   findLast(item => path.startsWith(item.path))?.element
                   ??  */
                   MainLayout;
+/*   
+  const ExComponents : FC[] = []; */
 
   return (
     <> 
@@ -38,6 +40,10 @@ function RootComponent() {
             <Layout>
               <AnimeOutlet />
             </Layout>
+{/* 
+            {
+              ExComponents.map((Component, index) => <Component key={index} />)
+            } */}
           </NextUIProvider>
         </SWRConfig>
       </QueryClientProvider>

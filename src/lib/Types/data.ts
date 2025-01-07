@@ -2,7 +2,6 @@ import { LoaderType, ModDownloadSource, SuprrortLanguage } from ".";
 
 export interface ModInfo {
     Name: string;
-    LatestVersion: string;
     Versions: string[];
     Description: string;
     Author: string;

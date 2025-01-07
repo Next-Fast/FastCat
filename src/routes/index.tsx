@@ -12,13 +12,13 @@ export const Route = createFileRoute('/')({
 
 const isVanildAtom = atom(true)
 
+const _props: PageLayoutProps = {
+  title: 'Home.title',
+  image: '/home-bg.jpg'
+}
+
 function RouteComponent() {
   const { t } = useTranslation();
-
-  const _props: PageLayoutProps = {
-    title: t('Home.title'),
-    image: '/home-bg.jpg'
-  }
 
   const [isVanild, setIsVanild] = useAtom(isVanildAtom);
   const buttonText = isVanild ? t('Home.StartVanild') : t('Home.StartModed');

@@ -5,16 +5,16 @@ export const Route = createFileRoute('/setting')({
   component: RouteComponent,
 })
 
-function RouteComponent() {
-  const { t } = useTranslation();
+const _props: PageLayoutProps = {
+  title: ('Setting.title')
+}
 
-  const _props: PageLayoutProps = {
-    title: t('Setting.title')
-  }
+function RouteComponent() {
 
   return (
     <PageLayout props={_props}>
-      <div>Setting</div>
+      <>
+      </>
     </PageLayout>
   )
 }

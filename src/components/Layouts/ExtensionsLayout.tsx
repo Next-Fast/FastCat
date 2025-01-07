@@ -1,11 +1,11 @@
 import { PageLayout, PageLayoutProps } from "./PageLayout";
 
+const _Props: PageLayoutProps = {
+    title: "Extensions.title",
+}
+
 export function ExtensionsLayout() 
 {
-    const _Props : PageLayoutProps = {
-        title: "Extensions",
-    }
-
     return (
         <PageLayout props={_Props}>
             <>
