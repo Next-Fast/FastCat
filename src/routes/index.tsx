@@ -1,10 +1,12 @@
 import { PageLayout, PageLayoutProps } from '@/components/Layouts/PageLayout'
-import { Button } from '@nextui-org/button';
+import { Button, ButtonGroup } from '@nextui-org/button';
 import { Tooltip } from '@nextui-org/tooltip'
 import { createFileRoute } from '@tanstack/react-router'
 import { atom, useAtom } from 'jotai'
 import { Button as ShadcnButton } from '@components/shadcn/ui/button'
-import { MdFolder } from 'react-icons/md'
+import { MdFolder, MdOutlineArrowBackIos, MdOutlineArrowForwardIos } from 'react-icons/md'
+import { useGetConfig } from '@/lib/hooks/use-swr-tauri';
+import { open } from '@tauri-apps/plugin-dialog'
 
 export const Route = createFileRoute('/')({
   component: RouteComponent,
@@ -17,22 +19,49 @@ const _props: PageLayoutProps = {
   image: '/home-bg.jpg'
 }
 
+async function OnSlectDirPath() {
+  const dir = await open({
+    multiple: false,
+    directory: true,
+  })
+
+/*   let config = useGetConfig().data;
+  if (config && dir)
+  {
+    config.GameConfig.DirPath = dir;
+    Invoke_Command('set_config', { value : config })
+  } */
+}
+
+async function StartGame(isVanild: boolean) {
+
+}
+
 function RouteComponent() {
   const { t } = useTranslation();
 
   const [isVanild, setIsVanild] = useAtom(isVanildAtom);
   const buttonText = isVanild ? t('Home.StartVanild') : t('Home.StartModed');
-  const gamePath =  "C:/Program Files (x86)/Steam/steamapps/common/Don't Starve Together";
+  const config = useGetConfig();
+  const gamePath = config?.data?.GameConfig.DirPath || 'Not set';
 
   return(
     <PageLayout props={_props}>
       <div className='game_lancher_Content flex flex-col-reverse items-center justify-center fixed bottom-[3.8rem] right-[3.5rem]'>
-        <Button size='lg' color="primary" variant='shadow' className='w-[11rem] h-[3rem] font-bold'>
-          {buttonText}
-        </Button>
+        <ButtonGroup size='lg' color="primary" className='h-[3rem] font-bold' >
+          <Button  className='w-[10rem]' onPress={async () => await StartGame(isVanild)}>
+            {buttonText}
+          </Button>
+          <Button className='w-[2rem]' isIconOnly={true} onPress={() => setIsVanild(!isVanild)}>
+            { isVanild ? <MdOutlineArrowBackIos /> : <MdOutlineArrowForwardIos /> }
+          </Button>
+        </ButtonGroup>
         
         <Tooltip content={gamePath} delay={250} closeDelay={0} color='foreground' className='opacity-[80%]'>
-          <ShadcnButton className='font-bold mb-[1rem] w-[11rem] h-[1.85rem] opacity-[80%] flex items-center justify-start'>
+          <ShadcnButton
+            className='font-bold mb-[1rem] w-[11rem] h-[1.85rem] opacity-[80%] flex items-center justify-start'
+            onClick={OnSlectDirPath}
+          >
             <MdFolder className='text-xl text-white -ml-2' />
             <span className='truncate'>{gamePath}</span>
           </ShadcnButton>

@@ -1,13 +1,14 @@
 import useSWR, { SWRConfiguration } from 'swr'
-import { isFirst } from '../constant/tauri-constant'
+import { get_config } from '../constant/tauri-constant'
 
 export const FileConfig: SWRConfiguration = {}
 
-export const useIsFirst = () => {
-    return useSWR<boolean>('/tauri/is_first', isFirst, {
+export const useGetConfig = () => {
+    return useSWR('/tauri/get_config', get_config,
+    {
         ...FileConfig,
         revalidateOnFocus: false,
         revalidateOnReconnect: false,
-        refreshInterval: 0,
+        refreshInterval: 5,
     })
 }

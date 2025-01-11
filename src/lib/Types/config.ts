@@ -2,12 +2,11 @@ import { LoaderType, SuprrortLanguage } from "."
 
 export type ManagerConfig = {
     lang : SuprrortLanguage,
+    GameConfig: GameConfig,
 }
 
 export type GameConfig = {
-    LoaderVersion: string,
-    Loader: LoaderType
-    Version: string,
+    Loader: LoaderType,
     DirPath: string,
 }
 

@@ -4,6 +4,12 @@
     "StartVanild": "开始香草",
     "StartModed": "启动模组"
   },
+  "Mods": {
+    "title": "模组"
+  },
+  "Extensions": {
+    "title": "扩展"
+  },
   "Setting": {
     "title": "设置"
   }

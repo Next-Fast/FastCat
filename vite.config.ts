@@ -13,9 +13,23 @@ import { NodePackageImporter } from 'sass-embedded'
 const host = process.env.TAURI_DEV_HOST;
 // @ts-expect-error process is a nodejs global
 const _port = process.env.IS_TAURI ? 2500 : 4000;
+// @ts-expect-error process is a nodejs global
+const isDev = new Boolean(process.env.IS_DEV);
 
 // https://vitejs.dev/config/
 export default defineConfig(async () => {
+  const devtools = () => {
+    return {
+      name: 'react-devtools',
+      transformIndexHtml(html: string) {
+        return html.replace(
+          /<\/head>/,
+          `<script src="http://localhost:8097"></script></head>`,
+        )
+      },
+    }
+  };
+
   const importer = new NodePackageImporter();
   const config : UserConfig = {
     css: {
@@ -60,7 +74,8 @@ export default defineConfig(async () => {
             dev: false,
             build: false,
           }
-        )
+        ),
+        isDev && devtools(),
       ],
     envPrefix: ["VITE_", "IS_"],
 

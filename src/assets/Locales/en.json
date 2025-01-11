@@ -5,6 +5,12 @@
         "StartVanild": "Start Vanilla",
         "StartModed": "Start Modded"
     },
+    "Mods": {
+        "title": "Mods"
+    },
+    "Extensions": {
+        "title": "Extensions"
+    },
     "Setting":
     {
         "title": "Setting"

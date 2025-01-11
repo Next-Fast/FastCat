@@ -11,6 +11,8 @@ import { createRouter, RouterProvider } from "@tanstack/react-router";
 
 // i18n
 import '@lib/locale'
+import { Invoke, Invoke_Command } from "./lib/utils";
+import { ManagerConfig } from "./lib/Types";
 
 // log
 /* import '@utils/log-utils' */
@@ -27,7 +29,6 @@ declare module '@tanstack/react-router' {
     router: typeof router
   }
 }
-
 
 // Render the app
 const rootElement = document.getElementById("root") as HTMLElement;

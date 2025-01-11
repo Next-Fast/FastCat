@@ -4,7 +4,7 @@ export * from "../hooks/use-swr-tauri"
 import { invoke, InvokeArgs, InvokeOptions } from "@tauri-apps/api/core";
 import { Is_Tauri } from "../../AppEnv";
 
-export type Tauri_Command = "greet" | "Get" | "IsFirst" | "GetModList" | "GetModInfo" | "GetBepInExInfo" | "GetGameInfo" | "GetGamePath";
+export type Tauri_Command = "set_config" | "get_config";
 
 export async function Invoke_Command<T>(command : Tauri_Command, args? : InvokeArgs, options? : InvokeOptions) : Promise<T | undefined>
 {

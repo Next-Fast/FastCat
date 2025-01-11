@@ -1,5 +1,10 @@
-import { Invoke_Deault } from "../utils/tarui-utlis"
+import { invoke } from "@tauri-apps/api/core"
+import { ManagerConfig } from "../Types"
 
-export const isFirst = () => {
-    return Invoke_Deault<boolean>('IsFirst', false);
+export const set_config = async (config : ManagerConfig) => {
+    await invoke("set_config", {config});
+}
+
+export const get_config = async () => {
+    return await invoke<ManagerConfig>("get_config");
 }
