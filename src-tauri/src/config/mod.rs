@@ -59,6 +59,11 @@ impl ManagerConfig {
             return value;
         }
     }
+
+    pub fn set(&mut self, set_lang : String, game : GameConfig) {
+        self.lang = set_lang;
+        self.game_config = game;
+    }
 }
 
 impl GameConfig {

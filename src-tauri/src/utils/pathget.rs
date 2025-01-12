@@ -22,6 +22,7 @@ pub fn get_game_path() -> Result<PathBuf> {
     return Ok(PathBuf::new());
 }
 
+#[allow(non_snake_case)]
 pub fn get_LocalLow_path() -> PathBuf {
     dirs::home_dir().unwrap().join("AppData/LocalLow/Innersloth/Among Us")
 }

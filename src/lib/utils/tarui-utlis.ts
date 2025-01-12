@@ -8,10 +8,17 @@ export type Tauri_Command = "set_config" | "get_config";
 
 export async function Invoke_Command<T>(command : Tauri_Command, args? : InvokeArgs, options? : InvokeOptions) : Promise<T | undefined>
 {
-    if (!Is_Tauri)
+    if(!Is_Tauri)
         return undefined;
 
-    return await invoke<T>(command as string, args, options)
+    try {
+        var result = await invoke<T>(command as string, args, options)
+        return result;
+    }
+    catch (e) {
+        console.log("Tauri Invoke Error: " + command);
+        return undefined;
+    }
 }
 
 export async function Invoke_Deault<T>(command: Tauri_Command, defaultValue : T, args?: InvokeArgs, options?: InvokeOptions) : Promise<T>

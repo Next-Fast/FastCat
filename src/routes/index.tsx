@@ -7,6 +7,8 @@ import { Button as ShadcnButton } from '@components/shadcn/ui/button'
 import { MdFolder, MdOutlineArrowBackIos, MdOutlineArrowForwardIos } from 'react-icons/md'
 import { useGetConfig } from '@/lib/hooks/use-swr-tauri';
 import { open } from '@tauri-apps/plugin-dialog'
+import { Invoke_Command } from '@/lib/utils/tarui-utlis';
+import { ManagerConfig } from '@/lib/Types';
 
 export const Route = createFileRoute('/')({
   component: RouteComponent,
@@ -19,18 +21,17 @@ const _props: PageLayoutProps = {
   image: '/home-bg.jpg'
 }
 
-async function OnSlectDirPath() {
+async function OnSlectDirPath(config: ManagerConfig | undefined) {
   const dir = await open({
     multiple: false,
     directory: true,
   })
 
-/*   let config = useGetConfig().data;
   if (config && dir)
   {
     config.GameConfig.DirPath = dir;
-    Invoke_Command('set_config', { value : config })
-  } */
+    Invoke_Command('set_config', { lang : config.lang, game : config.GameConfig });
+  }
 }
 
 async function StartGame(isVanild: boolean) {
@@ -60,7 +61,7 @@ function RouteComponent() {
         <Tooltip content={gamePath} delay={250} closeDelay={0} color='foreground' className='opacity-[80%]'>
           <ShadcnButton
             className='font-bold mb-[1rem] w-[11rem] h-[1.85rem] opacity-[80%] flex items-center justify-start'
-            onClick={OnSlectDirPath}
+            onClick={async () => OnSlectDirPath(config?.data)}
           >
             <MdFolder className='text-xl text-white -ml-2' />
             <span className='truncate'>{gamePath}</span>

@@ -26,3 +26,4 @@ export enum ModDownloadSource {
 }
 
 export type SuprrortLanguage = 'en' | 'zh';
+export const SupportLanguages: SuprrortLanguage[] = ['en', 'zh'];

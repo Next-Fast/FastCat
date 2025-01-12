@@ -1,6 +1,6 @@
 use crate::utils::StateMutex;
 
-use super::ManagerConfig;
+use super::{GameConfig, ManagerConfig};
 
 #[tauri::command]
 pub fn get_config(config: StateMutex<ManagerConfig>) -> ManagerConfig {
@@ -8,6 +8,7 @@ pub fn get_config(config: StateMutex<ManagerConfig>) -> ManagerConfig {
 }
 
 #[tauri::command]
-pub fn set_config(value: ManagerConfig, config: StateMutex<ManagerConfig>) {
-    *config.lock().unwrap() = value;
+pub fn set_config(lang : String, game : GameConfig, config: StateMutex<ManagerConfig>) {
+    let mut local  = config.lock().unwrap();
+    local.set(lang, game);
 }

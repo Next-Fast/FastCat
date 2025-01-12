@@ -11,6 +11,12 @@
     "title": "扩展"
   },
   "Setting": {
-    "title": "设置"
+    "title": "设置",
+    "Language": "语言",
+    "SelectLanguage": "选择您的语言"
+  },
+  "Language": {
+    "zh": "中文",
+    "en": "英文"
   }
 }

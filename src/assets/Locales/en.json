@@ -13,6 +13,12 @@
     },
     "Setting":
     {
-        "title": "Setting"
+        "title": "Setting",
+        "Language": "Language",
+        "SelectLanguage": "Select Language"
+    },
+    "Language": {
+        "zh": "Chinese",
+        "en": "English"
     }
 }

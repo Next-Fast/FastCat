@@ -20,12 +20,14 @@ export const DefaultMenuItems: MenuItem[] = [
     {
         name: 'Mods',
         url: '/mods',
-        icon: MdInventory
+        icon: MdInventory,
+        i18Key: 'Mods.title'
     },
     {
         name: 'Extensions',
         url: '/extension',
-        icon: MdExtension
+        icon: MdExtension,
+        i18Key: 'Extensions.title'
     },
     {
         name: 'Setting',
