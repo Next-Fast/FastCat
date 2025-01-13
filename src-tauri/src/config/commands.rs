@@ -55,3 +55,8 @@ pub async fn launch_game<'a>(vanild: bool, lock_config: StateMutex<'a, ManagerCo
     command.spawn().expect("Failed to launch game");
     Ok(())
 }
+
+#[tauri::command]
+pub fn get_lang(config: StateMutex<ManagerConfig>) -> String {
+    config.lock().unwrap().lang.clone()
+}

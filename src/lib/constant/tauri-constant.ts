@@ -20,3 +20,7 @@ export const region_config_path = async () => {
 export const launch_game = async (vailld : boolean) => {
     await invoke("launch_game", { vanild : vailld });
 }
+
+export const get_language = async () => {
+    return await invoke<SuprrortLanguage>("get_language");
+}

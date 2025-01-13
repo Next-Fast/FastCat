@@ -1,4 +1,4 @@
-use std::{fs, path::PathBuf, sync::Mutex};
+use std::{fs::{self, File}, io::{BufRead, BufReader}, path::PathBuf, sync::Mutex};
 
 use serde::{Deserialize, Serialize};
 use tauri::{AppHandle, Manager};
@@ -108,5 +108,32 @@ impl GameConfig {
         path.push("plugins");
 
         path
+    }
+
+
+    #[allow(non_snake_case)]
+    pub fn BepInEx_Version(&mut self) -> String {
+        let mut log_path = self.dir_path.clone();
+        log_path.push("changelog.txt");
+
+        if log_path.exists() {
+            let file = File::open(log_path).expect("Failed to open file");
+            let reader = BufReader::new(file);
+            let frist = match reader.lines().next() {
+                Some(Ok(line)) => line,
+                Some(Err(_error)) => "".to_owned(),
+                None => "".to_owned(),
+            };
+            
+            if frist != "" {
+                let mut splits = frist.split(" ");
+                // 获取第4个元素
+                if let Some(version) = splits.nth(3) {
+                    return version.to_owned();
+                }
+            }
+        }
+
+        "".to_owned()
     }
 }

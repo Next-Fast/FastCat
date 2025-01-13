@@ -1,4 +1,5 @@
 use std::path::PathBuf;
+
 use windows_registry::*;
 
 pub fn get_steam_path() -> Result<PathBuf> {
