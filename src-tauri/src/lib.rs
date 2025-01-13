@@ -22,7 +22,8 @@ pub fn run() {
             config::commands::get_config,
             config::commands::set_config,
             config::commands::has_bepinex,
-            config::commands::region_config_path
+            config::commands::region_config_path,
+            config::commands::launch_game
         ])
         .setup(|app| {
             let handle = app.handle().clone();
