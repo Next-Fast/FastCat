@@ -11,6 +11,7 @@ fn steup(app: &AppHandle) {
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
+        .plugin(tauri_plugin_fs::init())
         .plugin(tauri_plugin_deep_link::init())
         .plugin(tauri_plugin_dialog::init())
         .plugin(tauri_plugin_single_instance::init(|_app, _args, _cwd| {}))
@@ -20,6 +21,8 @@ pub fn run() {
         .invoke_handler(tauri::generate_handler![
             config::commands::get_config,
             config::commands::set_config,
+            config::commands::has_bepinex,
+            config::commands::region_config_path
         ])
         .setup(|app| {
             let handle = app.handle().clone();

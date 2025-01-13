@@ -15,6 +15,7 @@ import { Route as SettingImport } from './routes/setting'
 import { Route as ModsImport } from './routes/mods'
 import { Route as IndexImport } from './routes/index'
 import { Route as ExtensionIndexImport } from './routes/extension/index'
+import { Route as ExtensionServerEditImport } from './routes/extension/ServerEdit'
 
 // Create/Update Routes
 
@@ -39,6 +40,12 @@ const IndexRoute = IndexImport.update({
 const ExtensionIndexRoute = ExtensionIndexImport.update({
   id: '/extension/',
   path: '/extension/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ExtensionServerEditRoute = ExtensionServerEditImport.update({
+  id: '/extension/ServerEdit',
+  path: '/extension/ServerEdit',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -67,6 +74,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SettingImport
       parentRoute: typeof rootRoute
     }
+    '/extension/ServerEdit': {
+      id: '/extension/ServerEdit'
+      path: '/extension/ServerEdit'
+      fullPath: '/extension/ServerEdit'
+      preLoaderRoute: typeof ExtensionServerEditImport
+      parentRoute: typeof rootRoute
+    }
     '/extension/': {
       id: '/extension/'
       path: '/extension'
@@ -83,6 +97,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/mods': typeof ModsRoute
   '/setting': typeof SettingRoute
+  '/extension/ServerEdit': typeof ExtensionServerEditRoute
   '/extension': typeof ExtensionIndexRoute
 }
 
@@ -90,6 +105,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/mods': typeof ModsRoute
   '/setting': typeof SettingRoute
+  '/extension/ServerEdit': typeof ExtensionServerEditRoute
   '/extension': typeof ExtensionIndexRoute
 }
 
@@ -98,15 +114,22 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/mods': typeof ModsRoute
   '/setting': typeof SettingRoute
+  '/extension/ServerEdit': typeof ExtensionServerEditRoute
   '/extension/': typeof ExtensionIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/mods' | '/setting' | '/extension'
+  fullPaths: '/' | '/mods' | '/setting' | '/extension/ServerEdit' | '/extension'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/mods' | '/setting' | '/extension'
-  id: '__root__' | '/' | '/mods' | '/setting' | '/extension/'
+  to: '/' | '/mods' | '/setting' | '/extension/ServerEdit' | '/extension'
+  id:
+    | '__root__'
+    | '/'
+    | '/mods'
+    | '/setting'
+    | '/extension/ServerEdit'
+    | '/extension/'
   fileRoutesById: FileRoutesById
 }
 
@@ -114,6 +137,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ModsRoute: typeof ModsRoute
   SettingRoute: typeof SettingRoute
+  ExtensionServerEditRoute: typeof ExtensionServerEditRoute
   ExtensionIndexRoute: typeof ExtensionIndexRoute
 }
 
@@ -121,6 +145,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ModsRoute: ModsRoute,
   SettingRoute: SettingRoute,
+  ExtensionServerEditRoute: ExtensionServerEditRoute,
   ExtensionIndexRoute: ExtensionIndexRoute,
 }
 
@@ -137,6 +162,7 @@ export const routeTree = rootRoute
         "/",
         "/mods",
         "/setting",
+        "/extension/ServerEdit",
         "/extension/"
       ]
     },
@@ -148,6 +174,9 @@ export const routeTree = rootRoute
     },
     "/setting": {
       "filePath": "setting.tsx"
+    },
+    "/extension/ServerEdit": {
+      "filePath": "extension/ServerEdit.tsx"
     },
     "/extension/": {
       "filePath": "extension/index.tsx"

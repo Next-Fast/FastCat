@@ -5,9 +5,9 @@ import { createFileRoute } from '@tanstack/react-router'
 import { atom, useAtom } from 'jotai'
 import { Button as ShadcnButton } from '@components/shadcn/ui/button'
 import { MdFolder, MdOutlineArrowBackIos, MdOutlineArrowForwardIos } from 'react-icons/md'
-import { useGetConfig } from '@/lib/hooks/use-swr-tauri';
+import { useGetConfig, useHasBepInEx } from '@/lib/hooks/use-swr-tauri';
 import { open } from '@tauri-apps/plugin-dialog'
-import { Invoke_Command } from '@/lib/utils/tarui-utlis';
+import { Invoke_Command, launch_game } from '@/lib/utils/tarui-utlis';
 import { ManagerConfig } from '@/lib/Types';
 
 export const Route = createFileRoute('/')({
@@ -34,8 +34,8 @@ async function OnSlectDirPath(config: ManagerConfig | undefined) {
   }
 }
 
-async function StartGame(isVanild: boolean) {
-
+async function StartGame(vanild: boolean) {
+  await launch_game(vanild);
 }
 
 function RouteComponent() {
@@ -44,18 +44,24 @@ function RouteComponent() {
   const [isVanild, setIsVanild] = useAtom(isVanildAtom);
   const buttonText = isVanild ? t('Home.StartVanild') : t('Home.StartModed');
   const config = useGetConfig();
+  const hasBepInEx = useHasBepInEx();
   const gamePath = config?.data?.GameConfig.DirPath || 'Not set';
+
+  if (!hasBepInEx) {
+    setIsVanild(false);
+  }
 
   return(
     <PageLayout props={_props}>
       <div className='game_lancher_Content flex flex-col-reverse items-center justify-center fixed bottom-[3.8rem] right-[3.5rem]'>
         <ButtonGroup size='lg' color="primary" className='h-[3rem] font-bold' >
-          <Button  className='w-[10rem]' onPress={async () => await StartGame(isVanild)}>
+          <Button className='w-[10rem]' onPress={async () => await StartGame(isVanild)}>
             {buttonText}
           </Button>
+          { hasBepInEx && 
           <Button className='w-[2rem]' isIconOnly={true} onPress={() => setIsVanild(!isVanild)}>
             { isVanild ? <MdOutlineArrowBackIos /> : <MdOutlineArrowForwardIos /> }
-          </Button>
+          </Button>}
         </ButtonGroup>
         
         <Tooltip content={gamePath} delay={250} closeDelay={0} color='foreground' className='opacity-[80%]'>

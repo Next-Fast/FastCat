@@ -9,6 +9,7 @@ use crate::utils::{
 };
 
 pub mod commands;
+pub mod data_type;
 
 pub fn steup(app: &AppHandle) {
     let config = ManagerConfig::create(app);
@@ -60,9 +61,17 @@ impl ManagerConfig {
         }
     }
 
-    pub fn set(&mut self, set_lang : String, game : GameConfig) {
+    pub fn set(&mut self, set_lang: String, game: GameConfig) {
         self.lang = set_lang;
         self.game_config = game;
+    }
+
+    pub fn save(&self, app: &AppHandle) {
+        let config_path = app.path().app_config_dir().unwrap().join("config.json");
+        fs::create_dir_all(config_path.parent().unwrap())
+            .expect("Failed to create config.json directory");
+
+        write_json(config_path, &self).expect("Failed to write config.json");
     }
 }
 
@@ -74,22 +83,28 @@ impl GameConfig {
         }
     }
 
-    pub fn exe_path() -> PathBuf {
-        let mut path = Self::new().dir_path.clone();
+    pub fn has_bepinex(&mut self) -> bool {
+        let path = self.bep_in_ex_path();
+
+        path.exists()
+    }
+
+    pub fn exe_path(&mut self) -> PathBuf {
+        let mut path = self.dir_path.clone();
         path.push("Among Us.exe");
 
         path
     }
 
-    pub fn bep_in_ex_path() -> PathBuf {
-        let mut path = Self::new().dir_path.clone();
+    pub fn bep_in_ex_path(&mut self) -> PathBuf {
+        let mut path = self.dir_path.clone();
         path.push("BepInEx");
 
         path
     }
 
-    pub fn plugin_dir() -> PathBuf {
-        let mut path = Self::bep_in_ex_path();
+    pub fn plugin_dir(&mut self) -> PathBuf {
+        let mut path = self.bep_in_ex_path();
         path.push("plugins");
 
         path

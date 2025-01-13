@@ -1,6 +1,6 @@
 import { Href } from '@react-types/shared'
 import { IconType } from 'react-icons/lib'
-import { MdExtension, MdHome, MdInventory, MdSettings } from 'react-icons/md'
+import { MdExtension, MdHome, MdInventory, MdSettings, MdOutlineExtension } from 'react-icons/md'
 
 interface MenuItem {
     name: string,
@@ -34,5 +34,14 @@ export const DefaultMenuItems: MenuItem[] = [
         url: '/setting',
         icon: MdSettings,
         i18Key: 'Setting.title'
+    }
+]
+
+export const ExtensionMenuItems: MenuItem[] = [
+    {
+        name: 'ServerEdit',
+        url: '/extension/ServerEdit',
+        icon: MdOutlineExtension,
+        i18Key: 'Extension.ServerEdit.title'
     }
 ]
