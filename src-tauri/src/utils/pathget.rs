@@ -16,7 +16,10 @@ pub fn get_game_path() -> Result<PathBuf> {
     let steam_path = get_steam_path()?;
     let game_path = steam_path.join("steamapps/common/Among Us");
     if game_path.exists() {
-        return Ok(game_path);
+        // 将路径分隔符从 \\ 替换为 /
+        let game_path_str = game_path.to_str().unwrap().replace("\\", "/");
+        let game_path = PathBuf::from(game_path_str);
+        return Ok(game_path); 
     }
 
     return Ok(PathBuf::new());

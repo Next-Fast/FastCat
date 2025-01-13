@@ -1,5 +1,6 @@
 mod config;
 mod utils;
+mod manager;
 
 use tauri::AppHandle;
 

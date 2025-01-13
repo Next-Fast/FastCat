@@ -1,3 +1,5 @@
+use serde::{Deserialize, Serialize};
+
 struct BepInExInfo {
     version: String,
     is_release: bool,
@@ -21,4 +23,13 @@ struct ModInfo {
 struct DependencyInfo {
     name: String,
     version: String,
+}
+
+#[derive(Serialize, Deserialize)]
+struct Config {
+    #[serde(rename = "BepInEx")]
+    bep_in_ex: u8,
+    
+    #[serde(rename = "Mods")]
+    mods: u8,
 }

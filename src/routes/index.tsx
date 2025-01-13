@@ -29,7 +29,7 @@ async function OnSlectDirPath(config: ManagerConfig | undefined) {
 
   if (config && dir)
   {
-    config.GameConfig.DirPath = dir;
+    config.GameConfig.DirPath = dir.replaceAll('\\', '/');
     Invoke_Command('set_config', { lang : config.lang, game : config.GameConfig });
   }
 }
