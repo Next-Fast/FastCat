@@ -7,7 +7,7 @@ import { Button as ShadcnButton } from '@components/shadcn/ui/button'
 import { MdFolder, MdOutlineArrowBackIos, MdOutlineArrowForwardIos } from 'react-icons/md'
 import { useGetConfig, useHasBepInEx } from '@/lib/hooks/use-swr-tauri';
 import { open } from '@tauri-apps/plugin-dialog'
-import { Invoke_Command, launch_game } from '@/lib/utils/tarui-utlis';
+import { launch_game, set_config } from '@/lib/utils/tarui-utlis';
 import { ManagerConfig } from '@/lib/Types';
 
 export const Route = createFileRoute('/')({
@@ -30,26 +30,30 @@ async function OnSlectDirPath(config: ManagerConfig | undefined) {
   if (config && dir)
   {
     config.GameConfig.DirPath = dir.replaceAll('\\', '/');
-    Invoke_Command('set_config', { lang : config.lang, game : config.GameConfig });
+    await set_config(config.lang, config.GameConfig);
   }
 }
 
 async function StartGame(vanild: boolean) {
-  await launch_game(vanild);
+  await launch_game(!vanild);
 }
+
+const chanageVanild = atom(false)
 
 function RouteComponent() {
   const { t } = useTranslation();
 
   const [isVanild, setIsVanild] = useAtom(isVanildAtom);
+  const [isChanageVanild, setIsChanageVanild] = useAtom(chanageVanild);
   const buttonText = isVanild ? t('Home.StartVanild') : t('Home.StartModed');
   const config = useGetConfig();
   const hasBepInEx = useHasBepInEx();
   const gamePath = config?.data?.GameConfig.DirPath || 'Not set';
 
-  if (!hasBepInEx) {
-    setIsVanild(false);
-  }
+  useEffect(() => {
+    setIsVanild(!hasBepInEx.data);
+    setIsChanageVanild(true);
+  }, [hasBepInEx.data, !isChanageVanild]);
 
   return(
     <PageLayout props={_props}>

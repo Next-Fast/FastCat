@@ -1,5 +1,5 @@
 use std::process::Command;
-use tauri::{http::Error, AppHandle};
+use tauri::{AppHandle};
 
 use crate::utils::{pathget::get_LocalLow_path, StateMutex};
 
@@ -41,15 +41,15 @@ pub fn region_config_path() -> String {
 }
 
 #[tauri::command]
-pub async fn launch_game<'a>(vanild: bool, lock_config: StateMutex<'a, ManagerConfig>) -> Result<(), String> {
+pub async fn launch_game<'a>(moded: bool, lock_config: StateMutex<'a, ManagerConfig>) -> Result<(), String> {
     let mut config = lock_config.lock().unwrap();
     let exe_path = config.game_config.exe_path();
     let mut command = Command::new(exe_path);
     let mut winhttp_path = config.game_config.dir_path.clone();
     winhttp_path.push("winhttp.dll");
 
-    if !vanild && winhttp_path.exists() {
-        command.args(["--doorstop-enabled", "false"]);
+    if winhttp_path.exists() {
+        command.args(["--doorstop-enabled", &moded.to_string()]);
     }
 
     command.spawn().expect("Failed to launch game");

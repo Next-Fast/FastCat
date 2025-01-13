@@ -17,8 +17,8 @@ export const region_config_path = async () => {
     return await Invoke_Command<string>("region_config_path");
 }
 
-export const launch_game = async (vailld : boolean) => {
-    await Invoke_Command("launch_game", { vanild : vailld });
+export const launch_game = async (is_Moded : boolean) => {
+    await Invoke_Command("launch_game", { moded: is_Moded });
 }
 
 export const get_language = async () => {
