@@ -26,6 +26,7 @@ pub fn run() {
             config::commands::region_config_path,
             config::commands::launch_game,
             config::commands::get_lang,
+            utils::commands::open_dir,
         ])
         .setup(|app| {
             let handle = app.handle().clone();
