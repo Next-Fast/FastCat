@@ -11,6 +11,7 @@ fn steup(app: &AppHandle) {
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
+        .plugin(tauri_plugin_http::init())
         .plugin(tauri_plugin_fs::init())
         .plugin(tauri_plugin_deep_link::init())
         .plugin(tauri_plugin_dialog::init())
@@ -26,6 +27,8 @@ pub fn run() {
             config::commands::launch_game,
             config::commands::get_lang,
             utils::commands::open_dir,
+            utils::commands::get_info_version,
+            utils::commands::get_local_info_version
         ])
         .setup(|app| {
             let handle = app.handle().clone();

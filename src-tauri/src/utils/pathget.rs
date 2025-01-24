@@ -20,7 +20,7 @@ pub fn get_game_path() -> Result<PathBuf> {
         // 将路径分隔符从 \\ 替换为 /
         let game_path_str = game_path.to_str().unwrap().replace("\\", "/");
         let game_path = PathBuf::from(game_path_str);
-        return Ok(game_path); 
+        return Ok(game_path);
     }
 
     return Ok(PathBuf::new());

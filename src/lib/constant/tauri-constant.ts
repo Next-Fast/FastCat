@@ -1,8 +1,13 @@
 import { GameConfig, ManagerConfig, SuprrortLanguage } from "../Types"
 import { Invoke_Command } from "../utils";
 
-export const set_config = async (_lang : SuprrortLanguage, _game : GameConfig) => {
-    await Invoke_Command("set_config", { lang : _lang, game : _game});
+export const set_config = async (
+    _lang : SuprrortLanguage | undefined = undefined, 
+    _game : GameConfig | undefined = undefined,
+    _proxy : string | undefined = undefined
+) => {
+    var set_lang = _lang ? _lang : "";
+    await Invoke_Command("set_config", { lang : set_lang, game : _game, proxy : _proxy });
 }
 
 export const get_config = async () => {

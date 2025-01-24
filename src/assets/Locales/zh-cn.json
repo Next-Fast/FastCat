@@ -13,7 +13,8 @@
   "Setting": {
     "title": "设置",
     "Language": "语言",
-    "SelectLanguage": "选择您的语言"
+    "SelectLanguage": "选择您的语言",
+    "SelectProxy": "请选择Github下载源"
   },
   "Language": {
     "zh": "中文",

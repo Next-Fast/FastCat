@@ -1,5 +1,6 @@
 import clsx from 'clsx'
 import { Image } from '@nextui-org/image'
+import { cn } from '@/lib/utils';
 
 export interface PageLayoutProps {
     title : string,
@@ -21,7 +22,7 @@ function ImageContainer({ image }: { image: string | undefined }) {
     )
 }
 
-export function PageLayout({ props, children }: { props: PageLayoutProps, children: React.ReactNode }) {
+export function PageLayout({ props, children, className }: { props: PageLayoutProps, children: React.ReactNode, className?: string }) {
     const { t } = useTranslation();
 
     return (
@@ -35,7 +36,7 @@ export function PageLayout({ props, children }: { props: PageLayoutProps, childr
             )}>
                 <ImageContainer image={props.image} />
 
-                <div className="Content relative z-10">
+                <div className={cn("Content relative z-10", className)}>
                     {children}
                 </div>
             </div>

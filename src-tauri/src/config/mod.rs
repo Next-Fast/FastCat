@@ -1,4 +1,9 @@
-use std::{fs::{self, File}, io::{BufRead, BufReader}, path::PathBuf, sync::Mutex};
+use std::{
+    fs::{self, File},
+    io::{BufRead, BufReader},
+    path::PathBuf,
+    sync::Mutex,
+};
 
 use serde::{Deserialize, Serialize};
 use tauri::{AppHandle, Manager};
@@ -9,7 +14,6 @@ use crate::utils::{
 };
 
 pub mod commands;
-pub mod data_type;
 
 pub fn steup(app: &AppHandle) {
     let config = ManagerConfig::create(app);
@@ -22,6 +26,8 @@ pub struct ManagerConfig {
     lang: String,
     #[serde(rename = "GameConfig")]
     game_config: GameConfig,
+    #[serde(rename = "GithubProxy")]
+    github_proxy: String
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -43,6 +49,7 @@ impl ManagerConfig {
         Self {
             lang: "en".to_string(),
             game_config: GameConfig::new(),
+            github_proxy: "github.com".to_string()
         }
     }
 
@@ -61,8 +68,15 @@ impl ManagerConfig {
         }
     }
 
-    pub fn set(&mut self, set_lang: String, game: GameConfig) {
+    pub fn set_proxy(&mut self, proxy: String) {
+        self.github_proxy = proxy;
+    }
+
+    pub fn set_lang(&mut self, set_lang: String) {
         self.lang = set_lang;
+    }
+
+    pub fn set_game_config(&mut self, game: GameConfig) {
         self.game_config = game;
     }
 
@@ -110,7 +124,6 @@ impl GameConfig {
         path
     }
 
-
     #[allow(non_snake_case)]
     pub fn BepInEx_Version(&mut self) -> String {
         let mut log_path = self.dir_path.clone();
@@ -124,7 +137,7 @@ impl GameConfig {
                 Some(Err(_error)) => "".to_owned(),
                 None => "".to_owned(),
             };
-            
+
             if frist != "" {
                 let mut splits = frist.split(" ");
                 // 获取第4个元素

@@ -8,6 +8,8 @@ export {}
 declare global {
   const AnimeOutlet: typeof import('./components/AnimeOutlet')['AnimeOutlet']
   const ErrorFallback: typeof import('./components/ErrorFallback')['ErrorFallback']
+  const ModsDetail: typeof import('./components/ModsDetail')['ModsDetail']
+  const ModsList: typeof import('./components/ModsList')['ModsList']
   const SiderBar: typeof import('./components/SiderBar')['SiderBar']
   const atom: typeof import('jotai')['atom']
   const createRef: typeof import('react')['createRef']

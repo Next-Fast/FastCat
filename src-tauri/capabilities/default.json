@@ -15,6 +15,7 @@
     "dialog:default",
     "deep-link:default",
     "shell:default",
-    "fs:default"
+    "fs:default",
+    "http:default"
   ]
 }

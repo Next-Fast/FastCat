@@ -1,20 +1,24 @@
-import i18n from "i18next";
+import i18n, { changeLanguage } from "i18next";
 import { initReactI18next } from "react-i18next";
 import en from "@/assets/Locales/en.json";
 import zh_cn from "@/assets/Locales/zh-cn.json";
-import { get_language } from "./constant/tauri-constant";
+import { get_language, set_config } from "./constant/tauri-constant";
+import { SuprrortLanguage } from "./Types";
 
 const languageResource = {
     en: { translation : en },
     zh: { translation : zh_cn }
 };
 
+export const set_language = async (lang: SuprrortLanguage) => {
+    await changeLanguage(lang);
+    await set_config(lang);
+}
 
-let language = await get_language();
 i18n.use(initReactI18next)
     .init({
         resources: languageResource,
-        lng: language, 
+        lng: await get_language(), 
         fallbackLng: "zh",
 
         interpolation: {

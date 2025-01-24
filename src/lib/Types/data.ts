@@ -28,6 +28,12 @@ export interface BepInExInfo {
     BuildHash?: string,
 }
 
+export interface InfoVersion
+{
+    BepInEx: number,
+    Mods: number,
+}
+
 export class DefaultBepInExInfo implements BepInExInfo {
     Version: string = "6.0.0";
     IsRelease: boolean = false;
