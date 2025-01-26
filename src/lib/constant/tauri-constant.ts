@@ -43,5 +43,7 @@ export const get_local_info_version = async () => {
 }
 
 export const get_ping_latest = async (all : string[]) => {
-    return await Invoke_Command<string>("get_ping_latest", { urls : all});
+    all = all.map(item => item.replace("https://", ""));
+    var latest = await Invoke_Command<string>("get_ping_latest", { urls: all });
+    return "https://" + latest;
 }
