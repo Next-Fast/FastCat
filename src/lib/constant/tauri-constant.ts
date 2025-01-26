@@ -41,3 +41,7 @@ export const get_info_version = async (url : string) => {
 export const get_local_info_version = async () => {
     return await Invoke_Command<InfoVersion>("get_local_info_version");
 }
+
+export const get_ping_latest = async (all : string[]) => {
+    return await Invoke_Command<string>("get_ping_latest", { urls : all});
+}

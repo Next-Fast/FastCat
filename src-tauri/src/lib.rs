@@ -28,7 +28,8 @@ pub fn run() {
             config::commands::get_lang,
             utils::commands::open_dir,
             utils::commands::get_info_version,
-            utils::commands::get_local_info_version
+            utils::commands::get_local_info_version,
+            utils::commands::get_ping_latest,
         ])
         .setup(|app| {
             let handle = app.handle().clone();
