@@ -1,4 +1,4 @@
-import { GameConfig, ManagerConfig, SuprrortLanguage } from "../Types"
+import { GameConfig, InfoVersion, ManagerConfig, SuprrortLanguage } from "../Types"
 import { Invoke_Command } from "../utils";
 
 export const set_config = async (
@@ -32,4 +32,12 @@ export const get_language = async () => {
 
 export const open_dir = async (path : string) => {
     await Invoke_Command("open_dir", { path_str : path });
+}
+
+export const get_info_version = async (url : string) => {
+    return await Invoke_Command<InfoVersion>("get_info_version", { url_str : url });
+}
+
+export const get_local_info_version = async () => {
+    return await Invoke_Command<InfoVersion>("get_local_info_version");
 }

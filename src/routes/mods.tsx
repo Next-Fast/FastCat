@@ -12,11 +12,19 @@ const _prop: PageLayoutProps = {
   title: 'Mods.title',
 }
 
+const hasInit = atom(false);
+
 function RouteComponent() {
+  const [init, setInit] = useAtom(hasInit);
+
+  useAsyncEffect(async () => {
+
+    setInit(true);
+  }, [!init]);
 
   return (
     <PageLayout className='grid' props={_prop}>
-      <ModsList className='grid-cols-1' />
+      <ModsList className='grid-cols-1' mods={[]} />
       <Divider className='my-4'/>
       <div className='grid-cols-2 grid-rows-1 flex'>
         <Button>

@@ -14,8 +14,8 @@ pub fn open_dir(path_str: String) {
 }
 
 #[tauri::command]
-pub async fn get_info_version(url: String) -> Result<InfoVersion, String> {
-    let response = reqwest::get(url).await.expect("Failed to get version info");
+pub async fn get_info_version(url_str : String) -> Result<InfoVersion, String> {
+    let response = reqwest::get(url_str).await.expect("Failed to get version info");
     let info = response
         .json::<InfoVersion>()
         .await

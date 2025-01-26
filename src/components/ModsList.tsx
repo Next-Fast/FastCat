@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 import { Card, CardBody, CardFooter, CardHeader } from "@nextui-org/card"
 import { Image } from "@nextui-org/image";
 
-interface ModCardProps {
+export interface ModCardProps {
     image?: string;
     title: string;
     description: string;

@@ -114,3 +114,9 @@ declare global {
   const useWebSocket: typeof import('ahooks')['useWebSocket']
   const useWhyDidYouUpdate: typeof import('ahooks')['useWhyDidYouUpdate']
 }
+// for type re-export
+declare global {
+  // @ts-ignore
+  export type { ModCardProps } from './components/ModsList'
+  import('./components/ModsList')
+}
