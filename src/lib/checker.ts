@@ -15,8 +15,8 @@ async function check_data() {
 
 const endcoder = new TextEncoder();
 
-const get_data_path = async (file : string) => path.resolve(await path.appDataDir(), "ModList", file);
-const get_resource_path = async (file : string) => path.resolveResource(file);
+export const get_data_path = async (file : string) => path.resolve(await path.appDataDir(), "ModList", file);
+export const get_resource_path = async (file : string) => path.resolveResource(file);
 
 export async function start_async()
 {

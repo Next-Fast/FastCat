@@ -1,8 +1,11 @@
 import { PageLayout, PageLayoutProps } from '@/components/Layouts/PageLayout'
 import { ModsList } from '@/components/ModsList'
+import { get_data_path } from '@/lib/checker'
+import { ModInfo } from '@/lib/Types/data'
 import { Button } from '@nextui-org/button'
 import { Divider } from '@nextui-org/divider'
 import { createFileRoute } from '@tanstack/react-router'
+import { readTextFile } from '@tauri-apps/plugin-fs'
 
 export const Route = createFileRoute('/mods')({
   component: RouteComponent,
@@ -13,28 +16,48 @@ const _prop: PageLayoutProps = {
 }
 
 const hasInit = atom(false);
+const modsAtom = atom<ModInfo[]>([]);
+const detailAtom = atom<{
+  open: boolean,
+  mod: ModInfo | null,
+}>({ open: false, mod: null });
+
+async function init_mods(_setMods : (mods : ModInfo[]) => void) {
+  var mods = JSON.parse(await readTextFile(await get_data_path("Mods.json"))) as ModInfo[];
+  if (mods)
+  {
+    _setMods(mods);
+  }
+}
+
+function BepInExHeader() {
+  return (
+    <>
+    </>
+  )
+}
 
 function RouteComponent() {
   const [init, setInit] = useAtom(hasInit);
+  const [mods, setMods] = useAtom(modsAtom);
+  const [detail, setDetail] = useAtom(detailAtom);
 
   useAsyncEffect(async () => {
+    await init_mods(setMods);
 
     setInit(true);
   }, [!init]);
 
   return (
     <PageLayout className='grid' props={_prop}>
-      <ModsList className='grid-cols-1' mods={[]} />
-      <Divider className='my-4'/>
-      <div className='grid-cols-2 grid-rows-1 flex'>
-        <Button>
-          导入模组
-        </Button>
-        <Button>
-          导入模组包
-        </Button>
-      </div>
-
+      <header>
+        <BepInExHeader />
+      </header>
+      <body>
+        <ModsList className='grid-cols-1' mods={mods} _setDetail={setDetail}/>
+        { detail.open && <Divider /> }
+        { detail.open && <ModsDetail mod={detail.mod} />}
+      </body>
     </PageLayout>
   )
 }

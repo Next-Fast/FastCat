@@ -11,6 +11,7 @@ export interface ModInfo {
     DownloadSource: ModDownloadSource;
     DownloadLink?: string;
     MarkdownPath?: string;
+    imagePath?: string;
 }
 
 export interface DependencyInfo {

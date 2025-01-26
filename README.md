@@ -10,17 +10,11 @@ QQ群:[837094490](https://qm.qq.com/q/xgRhQ9pzhg)
 
 1.安装[NodeJs](https://nodejs.org/)  
 
-2.安装 pnpm
+2.安装 [Rust](https://www.rust-lang.org/tools/install)  
 
-~~~ bash
-npm install -g pnpm
-~~~
+3.进入项目目录,打开控制台  
 
-3.安装 [Rust](https://www.rust-lang.org/tools/install)  
-
-4.进入项目目录,打开控制台  
-
-5.执行`pnpm i` 或 `pnpm install` 安装依赖  
+4.执行`pnpm i` 或 `pnpm install` 安装依赖  
 
 ### Web UI 开发
 
