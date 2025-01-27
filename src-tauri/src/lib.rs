@@ -27,8 +27,8 @@ pub fn run() {
             config::commands::launch_game,
             config::commands::get_lang,
             utils::commands::open_dir,
-            utils::commands::get_info_version,
-            utils::commands::get_local_info_version,
+            utils::commands::get_github_version,
+            utils::commands::get_local_version,
             utils::commands::get_ping_latest,
         ])
         .setup(|app| {

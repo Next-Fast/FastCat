@@ -1,10 +1,9 @@
 import { PageLayout, PageLayoutProps } from '@/components/Layouts/PageLayout'
 import { ModsList } from '@/components/ModsList'
-import { get_data_path } from '@/lib/checker'
 import { ModInfo } from '@/lib/Types/data'
 import { Divider } from "@heroui/divider"
 import { createFileRoute } from '@tanstack/react-router'
-import { exists, readTextFile } from '@tauri-apps/plugin-fs'
+import { BaseDirectory, exists, readTextFile } from '@tauri-apps/plugin-fs'
 
 export const Route = createFileRoute('/mods')({
   component: RouteComponent,
@@ -22,11 +21,11 @@ const detailAtom = atom<{
 }>({ open: false, mod: null });
 
 async function init_mods(_setMods : (mods : ModInfo[]) => void) {
-  var path = await get_data_path("Mods.json");
-  if (!await exists(path))
+  var has_exists = await exists("Mods.json", { baseDir: BaseDirectory.AppData });
+  if (!has_exists)
       return;
 
-  var mods = JSON.parse(await readTextFile(path)) as ModInfo[];
+  var mods = JSON.parse(await readTextFile("Mods.json", { baseDir: BaseDirectory.AppData })) as ModInfo[];
   if (mods)
   {
     _setMods(mods);

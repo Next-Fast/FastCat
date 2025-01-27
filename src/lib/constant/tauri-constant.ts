@@ -31,15 +31,15 @@ export const get_language = async () => {
 }
 
 export const open_dir = async (path : string) => {
-    await Invoke_Command("open_dir", { path_str : path });
+    await Invoke_Command("open_dir", { pathStr : path });
 }
 
-export const get_info_version = async (url : string) => {
-    return await Invoke_Command<InfoVersion>("get_info_version", { url_str : url });
+export const get_github_version = async (url : string) => {
+    return await Invoke_Command<InfoVersion>("get_github_version", { urlStr : url });
 }
 
-export const get_local_info_version = async () => {
-    return await Invoke_Command<InfoVersion>("get_local_info_version");
+export const get_local_version = async () => {
+    return await Invoke_Command<InfoVersion>("get_local_version");
 }
 
 export const get_ping_latest = async (all : string[]) => {

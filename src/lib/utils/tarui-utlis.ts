@@ -6,7 +6,7 @@ import { Is_Tauri } from "../../AppEnv";
 
 export type Tauri_Command = 
     "set_config" | "get_config" | "has_bepinex" | "region_config_path" | "launch_game" | "get_lang" |
-    "open_dir" | "get_info_version" | "get_local_info_version" | "get_ping_latest"
+    "open_dir" | "get_github_version" | "get_local_version" | "get_ping_latest"
 ;
 
 export async function Invoke_Command<T>(command : Tauri_Command, args? : InvokeArgs, options? : InvokeOptions) : Promise<T | undefined>
@@ -19,7 +19,7 @@ export async function Invoke_Command<T>(command : Tauri_Command, args? : InvokeA
         return result;
     }
     catch (e) {
-        console.log("Tauri Invoke Error: " + command);
+        console.log(command + " Tauri Invoke Error: " + e);
         return undefined;
     }
 }

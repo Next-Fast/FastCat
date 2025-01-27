@@ -1,44 +1,34 @@
-import { appDataDir, resolve, resolveResource } from "@tauri-apps/api/path";
+import {  BaseDirectory} from "@tauri-apps/api/path";
 import { getProxyUrl } from "./constant/github-proxy";
-import { get_info_version, get_local_info_version } from "./constant/tauri-constant";
 import { bepinex_url, mods_url, version_url } from "./constant/url-constant";
-import { exists, copyFile, mkdir, writeTextFile } from "@tauri-apps/plugin-fs";
+import { exists, copyFile, writeTextFile, CopyFileOptions, ExistsOptions, WriteFileOptions } from "@tauri-apps/plugin-fs";
+import { InfoVersion } from "./Types";
+import { Is_Dev } from "@/AppEnv";
+import { get_github_version, get_local_version } from "./constant/tauri-constant";
 
 let has_file = false;
 async function check_data() {
+    var option : ExistsOptions = {
+        baseDir: BaseDirectory.AppData
+    }
     has_file = 
-    await exists(await get_data_path("version.json")) 
+    await exists("version.json", option) 
     && 
-    await exists(await get_data_path("Mods.json")) 
+    await exists("Mods.json", option) 
     && 
-    await exists(await get_data_path("Bepinex.json"));
+    await exists("Bepinex.json", option);
 }
-
-export const get_data_path = async (file : string) => resolve(await appDataDir(), "ModList", file);
-export const get_resource_path = async (file : string) => resolveResource(file);
 
 export async function start_async()
 {
-    await mkdir(await resolve(await appDataDir(), "ModList"));
     await check_data();
 
-    var localVersion = await get_local_info_version();
-    var githubVersion = await get_info_version(getProxyUrl(version_url));
-    if (!has_file && localVersion && githubVersion)
-    {
-        if (githubVersion.BepInEx > localVersion.BepInEx || githubVersion.Mods > localVersion.Mods)
-        {
-            await Update_BepInEx();
-            await Update_Mods();
-            await writeTextFile(await get_data_path("version.json"), JSON.stringify(githubVersion));
-        }
-        else
-        {
-            await CopyFile();
-        }
+    if (!has_file)
+        await CopyFile();
 
-        return;
-    }
+    var localVersion = await get_local_version();
+    var url = getProxyUrl(version_url);
+    var githubVersion = await get_github_version(url);
 
     if (!localVersion || !githubVersion)
     {
@@ -46,34 +36,54 @@ export async function start_async()
         return;
     }
 
+    console.log(`localVersion.BepInEx: ${localVersion.BepInEx}, githubVersion.BepInEx: ${githubVersion.BepInEx}`);
+    console.log(`localVersion.Mods: ${localVersion.Mods}, githubVersion.Mods: ${githubVersion.Mods}`);
+
     if (localVersion.BepInEx < githubVersion.BepInEx)
         Update_BepInEx();
 
     if (localVersion.Mods < githubVersion.Mods)
         Update_Mods();
 
-    writeTextFile(await get_data_path("version.json"), JSON.stringify(githubVersion));
+    await WriteVersion(githubVersion);
+
+    console.log("检查更新成功");
 }
+
+const writeOption : WriteFileOptions = {
+    baseDir: BaseDirectory.AppData
+}
+
+export const WriteVersion = async (version : InfoVersion) =>
+    await writeTextFile("version.json", JSON.stringify(version), writeOption);
 
 async function Update_BepInEx()
 {
     var response = await fetch(getProxyUrl(bepinex_url))
     var data = await response.text();
-    writeTextFile(await get_data_path("Bepinex.json"), data);
+    await writeTextFile("Bepinex.json", data, writeOption);
+    console.log("更新BepInEx成功");
 }
 
 async function Update_Mods()
 {
     var response = await fetch(getProxyUrl(mods_url))
     var data = await response.text();
-    writeTextFile(await get_data_path("Mods.json"), data);
+    await writeTextFile("Mods.json", data, writeOption);
+    console.log("更新Mods成功");
 }
 
 async function CopyFile()
 {
-    copyFile(await get_resource_path("Json/version.json"), await get_data_path("version.json"));
-    copyFile(await get_resource_path("Json/Mods.json"), await get_data_path("Mods.json"));
-    copyFile(await get_resource_path("Json/Bepinex.json"), await get_data_path("Bepinex.json"));
+    var option : CopyFileOptions = {
+        fromPathBaseDir: BaseDirectory.Resource,
+        toPathBaseDir: BaseDirectory.AppData
+    }
+    var PreFix = Is_Dev ? "_up_/Resource/" : "";
+    await copyFile(PreFix + "Json/version.json", "version.json", option);
+    await copyFile(PreFix + "Json/Mods.json", "Mods.json", option);
+    await copyFile(PreFix + "Json/Bepinex.json", "Bepinex.json", option);
+    console.log("复制文件成功");
 }
 
 export function start() {
