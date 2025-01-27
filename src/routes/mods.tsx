@@ -2,10 +2,9 @@ import { PageLayout, PageLayoutProps } from '@/components/Layouts/PageLayout'
 import { ModsList } from '@/components/ModsList'
 import { get_data_path } from '@/lib/checker'
 import { ModInfo } from '@/lib/Types/data'
-import { Button } from "@heroui/button"
 import { Divider } from "@heroui/divider"
 import { createFileRoute } from '@tanstack/react-router'
-import { readTextFile } from '@tauri-apps/plugin-fs'
+import { exists, readTextFile } from '@tauri-apps/plugin-fs'
 
 export const Route = createFileRoute('/mods')({
   component: RouteComponent,
@@ -23,7 +22,11 @@ const detailAtom = atom<{
 }>({ open: false, mod: null });
 
 async function init_mods(_setMods : (mods : ModInfo[]) => void) {
-  var mods = JSON.parse(await readTextFile(await get_data_path("Mods.json"))) as ModInfo[];
+  var path = await get_data_path("Mods.json");
+  if (!await exists(path))
+      return;
+
+  var mods = JSON.parse(await readTextFile(path)) as ModInfo[];
   if (mods)
   {
     _setMods(mods);
@@ -50,14 +53,10 @@ function RouteComponent() {
 
   return (
     <PageLayout className='grid' props={_prop}>
-      <header>
-        <BepInExHeader />
-      </header>
-      <body>
-        <ModsList className='grid-cols-1' mods={mods} _setDetail={setDetail}/>
-        { detail.open && <Divider /> }
-        { detail.open && <ModsDetail mod={detail.mod} />}
-      </body>
+      <BepInExHeader />
+      <ModsList className='grid-cols-1' mods={mods} _setDetail={setDetail}/>
+      { detail.open && <Divider /> }
+      { detail.open && <ModsDetail mod={detail.mod} />}
     </PageLayout>
   )
 }

@@ -1,11 +1,11 @@
 mod config;
 mod utils;
 
+use eyre::Context;
 use tauri::AppHandle;
 
 fn steup(app: &AppHandle) {
-    config::steup(app);
-    return;
+    config::steup(app).context("Failed to setup config").unwrap();
 }
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
