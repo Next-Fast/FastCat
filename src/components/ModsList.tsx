@@ -1,7 +1,7 @@
 import { ModInfo } from "@/lib/Types";
 import { cn } from "@/lib/utils";
-import { Card, CardBody, CardFooter, CardHeader } from "@nextui-org/card"
-import { Image } from "@nextui-org/image";
+import { Card, CardBody, CardFooter, CardHeader } from "@heroui/card"
+import { Image } from "@heroui/image";
 
 function ItemButtonGroup({ info } : { info: ModInfo }) {
     return (

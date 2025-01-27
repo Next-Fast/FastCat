@@ -1,6 +1,6 @@
 import { PageLayout, PageLayoutProps } from '@/components/Layouts/PageLayout'
-import { Button, ButtonGroup } from '@nextui-org/button';
-import { Tooltip } from '@nextui-org/tooltip'
+import { Button, ButtonGroup } from "@heroui/button";
+import { Tooltip } from "@heroui/tooltip"
 import { createFileRoute } from '@tanstack/react-router'
 import { atom, useAtom } from 'jotai'
 import { Button as ShadcnButton } from '@components/shadcn/ui/button'
