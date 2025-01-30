@@ -1,9 +1,8 @@
 import {  BaseDirectory} from "@tauri-apps/api/path";
 import { getProxyUrl } from "./constant/github-proxy";
-import { bepinex_url, mods_url, version_url } from "./constant/url-constant";
+import { bepinex_url, hash_url, mods_url, version_url } from "./constant/url-constant";
 import { exists, copyFile, writeTextFile, CopyFileOptions, ExistsOptions, WriteFileOptions } from "@tauri-apps/plugin-fs";
 import { InfoVersion } from "./Types";
-import { Is_Dev } from "@/AppEnv";
 import { get_github_version, get_local_version } from "./constant/tauri-constant";
 
 let has_file = false;
@@ -16,7 +15,10 @@ async function check_data() {
     && 
     await exists("Mods.json", option) 
     && 
-    await exists("Bepinex.json", option);
+    await exists("Bepinex.json", option)
+    &&
+    await exists("GameHash.json", option)
+    ;
 }
 
 export async function start_async()
@@ -38,12 +40,16 @@ export async function start_async()
 
     console.log(`localVersion.BepInEx: ${localVersion.BepInEx}, githubVersion.BepInEx: ${githubVersion.BepInEx}`);
     console.log(`localVersion.Mods: ${localVersion.Mods}, githubVersion.Mods: ${githubVersion.Mods}`);
+    console.log(`localVersion.GameHash: ${localVersion.Hash}, githubVersion.GameHash: ${githubVersion.Hash}`);
 
     if (localVersion.BepInEx < githubVersion.BepInEx)
         Update_BepInEx();
 
     if (localVersion.Mods < githubVersion.Mods)
         Update_Mods();
+
+    if (localVersion.Hash < githubVersion.Hash)
+        Update_GameHash();
 
     await WriteVersion(githubVersion);
 
@@ -59,7 +65,7 @@ export const WriteVersion = async (version : InfoVersion) =>
 
 async function Update_BepInEx()
 {
-    var response = await fetch(getProxyUrl(bepinex_url))
+    var response = await fetch(getProxyUrl(bepinex_url));
     var data = await response.text();
     await writeTextFile("Bepinex.json", data, writeOption);
     console.log("更新BepInEx成功");
@@ -67,10 +73,18 @@ async function Update_BepInEx()
 
 async function Update_Mods()
 {
-    var response = await fetch(getProxyUrl(mods_url))
+    var response = await fetch(getProxyUrl(mods_url));
     var data = await response.text();
     await writeTextFile("Mods.json", data, writeOption);
     console.log("更新Mods成功");
+}
+
+async function Update_GameHash()
+{
+    var response = await fetch(getProxyUrl(hash_url));
+    var data = await response.text();
+    await writeTextFile("GameHash.json", data, writeOption);
+    console.log("更新GameHash成功");
 }
 
 async function CopyFile()
@@ -79,10 +93,11 @@ async function CopyFile()
         fromPathBaseDir: BaseDirectory.Resource,
         toPathBaseDir: BaseDirectory.AppData
     }
-    var PreFix = Is_Dev ? "_up_/Resource/" : "";
+    var PreFix = "_up_/Resource/";
     await copyFile(PreFix + "Json/version.json", "version.json", option);
     await copyFile(PreFix + "Json/Mods.json", "Mods.json", option);
     await copyFile(PreFix + "Json/Bepinex.json", "Bepinex.json", option);
+    await copyFile(PreFix + "Json/GameHash.json", "GameHash.json", option);
     console.log("复制文件成功");
 }
 

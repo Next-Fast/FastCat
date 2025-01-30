@@ -14,4 +14,6 @@ pub struct InfoVersion{
     pub bepinex: i32,
     #[serde(rename = "Mods")]
     pub mods: i32,
+    #[serde(rename = "Hash")]
+    pub hash: i32
 }
