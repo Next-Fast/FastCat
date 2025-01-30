@@ -35,6 +35,7 @@ pub fn get_local_version(app: AppHandle) -> InfoVersion {
         return InfoVersion {
             bepinex: 0,
             mods: 0,
+            hash: 0,
         };
     }
     let file = File::open(path).unwrap();
