@@ -75,3 +75,8 @@ pub async fn launch_game<'a>(
 pub fn get_lang(config: StateMutex<ManagerConfig>) -> String {
     config.lock().unwrap().lang.clone()
 }
+
+#[tauri::command]
+pub fn has_exe(config: StateMutex<ManagerConfig>) -> bool {
+    config.lock().unwrap().game_config.exe_path().exists()
+}

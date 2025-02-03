@@ -26,6 +26,7 @@ pub fn run() {
             config::commands::region_config_path,
             config::commands::launch_game,
             config::commands::get_lang,
+            config::commands::has_exe,
             utils::commands::open_dir,
             utils::commands::get_github_version,
             utils::commands::get_local_version,
