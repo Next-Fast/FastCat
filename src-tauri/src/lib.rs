@@ -6,6 +6,7 @@ use tauri::AppHandle;
 
 fn steup(app: &AppHandle) {
     config::steup(app).context("Failed to setup config").unwrap();
+    utils::deeplink::setup(app).context("Failed to setup deeplink").unwrap();
 }
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
