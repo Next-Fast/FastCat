@@ -4,6 +4,7 @@ import { bepinex_url, hash_url, mods_url, version_url } from "./constant/url-con
 import { exists, copyFile, writeTextFile, CopyFileOptions, ExistsOptions, WriteFileOptions } from "@tauri-apps/plugin-fs";
 import { InfoVersion } from "./Types";
 import { get_github_version, get_local_version } from "./constant/tauri-constant";
+import { Is_Tauri } from "@/AppEnv";
 
 let has_file = false;
 async function check_data() {
@@ -102,6 +103,9 @@ async function CopyFile()
 }
 
 export function start() {
+    if (!Is_Tauri)
+        return;
+    
     try 
     {
         start_async();

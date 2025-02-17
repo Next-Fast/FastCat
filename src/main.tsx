@@ -1,5 +1,5 @@
 // Style
-import "@styles/tailwindcss.css";
+import "./styles/globals.css";
 
 // React
 import React from "react";
