@@ -2,8 +2,7 @@ import { PageLayout, PageLayoutProps } from '@/components/Layouts/PageLayout'
 import { ModsList } from '@/components/ModsList'
 import { get_data_path } from '@/lib/checker'
 import { ModInfo } from '@/lib/Types/data'
-import { Button } from "@heroui/button"
-import { Divider } from "@heroui/divider"
+import { Divider } from "@heroui/react"
 import { createFileRoute } from '@tanstack/react-router'
 import { readTextFile } from '@tauri-apps/plugin-fs'
 

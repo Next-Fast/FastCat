@@ -42,6 +42,6 @@
       "@assets/*": ["./src/assets/*"]
     }
   },
-  "include": ["src", "auto-import.d.ts"],
+  "include": ["src", "auto-import.d.ts", "tailwind.config.js"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

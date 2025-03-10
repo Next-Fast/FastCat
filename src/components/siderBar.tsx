@@ -1,8 +1,8 @@
 import { DefaultMenuItems } from '@/lib/MenuItem';
-import { Button } from "@heroui/button";
+import { Button } from "@heroui/react";
 import { useLocation, useNavigate } from '@tanstack/react-router';
 import logoSVG from '@assets/neko.svg';
-import { Divider } from "@heroui/divider";
+import { Divider } from "@heroui/react";
 
 export function SiderBar() {
   const nav = useNavigate();

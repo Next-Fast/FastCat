@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { Image } from "@heroui/image"
+import { Image } from "@heroui/react"
 import { cn } from '@/lib/utils';
 
 export interface PageLayoutProps {

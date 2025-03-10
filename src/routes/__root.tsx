@@ -2,7 +2,7 @@ import { TanStackRouterDevtools/* , UseMainLayoutPaths  */} from '@/lib/utils/ro
 import { NavigateOptions, ToOptions, createRootRoute, /* useLocation, */ useRouter } from '@tanstack/react-router'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { SWRConfig } from 'swr'
-import { HeroUIProvider } from "@heroui/system"
+import { HeroUIProvider } from "@heroui/react"
 import { MainLayout } from '@/components/Layouts/MainLayout'
 import { AnimeOutlet } from '@/components/AnimeOutlet'
 

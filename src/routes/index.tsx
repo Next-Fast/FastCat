@@ -1,14 +1,16 @@
+import '@styles/tailwindcss.css'
+
 import { PageLayout, PageLayoutProps } from '@/components/Layouts/PageLayout'
-import { Button, ButtonGroup } from "@heroui/button";
-import { Tooltip } from "@heroui/tooltip"
+import { Button, ButtonGroup } from "@heroui/react";
+import { Tooltip } from "@heroui/react"
 import { createFileRoute } from '@tanstack/react-router'
 import { atom, useAtom } from 'jotai'
 import { Button as ShadcnButton } from '@components/shadcn/ui/button'
 import { MdFolder, MdOutlineArrowBackIos, MdOutlineArrowForwardIos } from 'react-icons/md'
-import { useGetConfig, useHasBepInEx } from '@/lib/hooks/use-swr-tauri';
+import { useGetConfig, useHasBepInEx } from '@/lib/hooks/use-swr-tauri'
 import { open } from '@tauri-apps/plugin-dialog'
-import { launch_game, set_config } from '@/lib/utils/tarui-utlis';
-import { ManagerConfig } from '@/lib/Types';
+import { launch_game, set_config } from '@/lib/utils/tarui-utlis'
+import { ManagerConfig } from '@/lib/Types'
 
 export const Route = createFileRoute('/')({
   component: RouteComponent,

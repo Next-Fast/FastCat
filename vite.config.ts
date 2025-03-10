@@ -31,13 +31,12 @@ export default defineConfig(async () => {
     }
   };
 
-  const importer = new NodePackageImporter();
   const config : UserConfig = {
     css: {
       preprocessorOptions: {
         scss: {
           api: 'modern-compiler',
-          importers: [importer],
+          importers: [new NodePackageImporter()],
         }
       }
     },

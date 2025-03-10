@@ -1,7 +1,7 @@
 import { ModInfo } from "@/lib/Types";
 import { cn } from "@/lib/utils";
-import { Card, CardBody, CardFooter, CardHeader } from "@heroui/card"
-import { Image } from "@heroui/image";
+import { Card, CardBody, CardFooter, CardHeader } from "@heroui/react"
+import { Image } from "@heroui/react";
 
 function ItemButtonGroup({ info } : { info: ModInfo }) {
     return (

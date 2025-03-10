@@ -1,6 +1,6 @@
 import { PageLayout, PageLayoutProps } from '@/components/Layouts/PageLayout'
 import { createFileRoute } from '@tanstack/react-router'
-import { Select, SelectItem } from "@heroui/select"
+import { Select, SelectItem } from "@heroui/react"
 import { SupportLanguages, SuprrortLanguage } from '@/lib/Types'
 import { useGetConfig } from '@/lib/hooks/use-swr-tauri'
 import { ALL_PROXY_URL, set_proxy } from '@/lib/constant/github-proxy'
@@ -31,7 +31,7 @@ function RouteComponent() {
           {
             SupportLanguages.map((lang) => {
               return (
-                <SelectItem key={lang} value={lang} description={lang}>
+                <SelectItem key={lang} description={lang}>
                   {t(`Language.${lang}`)}
                 </SelectItem>
               )
@@ -49,7 +49,7 @@ function RouteComponent() {
           {
             ALL_PROXY_URL.map(proxy => {
               return (
-                <SelectItem key={proxy.name} value={proxy.name} description={proxy.url}>
+                <SelectItem key={proxy.name} description={proxy.url}>
                   {proxy.name}
                 </SelectItem>
               )
