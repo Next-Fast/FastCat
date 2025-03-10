@@ -10,7 +10,7 @@ declare global {
   const ErrorFallback: typeof import('./components/ErrorFallback')['ErrorFallback']
   const ModsDetail: typeof import('./components/ModsDetail')['ModsDetail']
   const ModsList: typeof import('./components/ModsList')['ModsList']
-  const SiderBar: typeof import('./components/SiderBar')['SiderBar']
+  const SiderBar: typeof import('./components/siderBar')['SiderBar']
   const atom: typeof import('jotai')['atom']
   const createRef: typeof import('react')['createRef']
   const forwardRef: typeof import('react')['forwardRef']
@@ -113,10 +113,4 @@ declare global {
   const useVirtualList: typeof import('ahooks')['useVirtualList']
   const useWebSocket: typeof import('ahooks')['useWebSocket']
   const useWhyDidYouUpdate: typeof import('ahooks')['useWhyDidYouUpdate']
-}
-// for type re-export
-declare global {
-  // @ts-ignore
-  export type { ModCardProps } from './components/ModsList'
-  import('./components/ModsList')
 }
