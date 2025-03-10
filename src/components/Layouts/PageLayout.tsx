@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { Image } from '@nextui-org/image'
+import { Image } from "@heroui/image"
 import { cn } from '@/lib/utils';
 
 export interface PageLayoutProps {

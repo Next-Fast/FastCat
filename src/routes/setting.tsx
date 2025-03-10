@@ -1,6 +1,6 @@
 import { PageLayout, PageLayoutProps } from '@/components/Layouts/PageLayout'
 import { createFileRoute } from '@tanstack/react-router'
-import { Select, SelectItem } from '@nextui-org/select'
+import { Select, SelectItem } from "@heroui/select"
 import { SupportLanguages, SuprrortLanguage } from '@/lib/Types'
 import { useGetConfig } from '@/lib/hooks/use-swr-tauri'
 import { ALL_PROXY_URL, set_proxy } from '@/lib/constant/github-proxy'

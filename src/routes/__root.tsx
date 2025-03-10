@@ -2,7 +2,7 @@ import { TanStackRouterDevtools/* , UseMainLayoutPaths  */} from '@/lib/utils/ro
 import { NavigateOptions, ToOptions, createRootRoute, /* useLocation, */ useRouter } from '@tanstack/react-router'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { SWRConfig } from 'swr'
-import { NextUIProvider } from "@nextui-org/system"
+import { HeroUIProvider } from "@heroui/system"
 import { MainLayout } from '@/components/Layouts/MainLayout'
 import { AnimeOutlet } from '@/components/AnimeOutlet'
 
@@ -33,7 +33,7 @@ function RootComponent() {
     <> 
       <QueryClientProvider client={queryClient}>
         <SWRConfig>
-          <NextUIProvider 
+          <HeroUIProvider 
             navigate={(to, options) => router.navigate({ to, ...options })}
             useHref={(to) => router.buildLocation({ to }).href}
           >
@@ -44,7 +44,7 @@ function RootComponent() {
             {
               ExComponents.map((Component, index) => <Component key={index} />)
             } */}
-          </NextUIProvider>
+          </HeroUIProvider>
         </SWRConfig>
       </QueryClientProvider>
       <TanStackRouterDevtools />
