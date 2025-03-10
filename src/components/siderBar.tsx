@@ -11,7 +11,7 @@ export function SiderBar() {
 
   return (
     <div className='sider-bar ml-[3.5rem] mt-[3.5rem] flex-col flex items-center 
-    bg-gradient-to-tr from-white to-zinc-100 w-[135px] h-5/6 rounded-3xl'>
+    bg-linear-to-tr from-white to-zinc-100 w-[135px] h-5/6 rounded-3xl'>
       
       <img src={logoSVG} alt='logo' className='w-[6rem] h-[6rem] mt-2'/>
       <a className='text-lg font-semibold mt-2'>Fast Neko</a>
@@ -27,7 +27,7 @@ export function SiderBar() {
             () =>
             nav({to: item.url})
             }
-          startContent={item.icon && <item.icon className='text-[1.2rem] flex-shrink-0 -mr-2'/>}
+          startContent={item.icon && <item.icon className='text-[1.2rem] shrink-0 -mr-2'/>}
           key={`menu Item ${item.name}`}
           >
             {item.i18Key ? t(item.i18Key) : item.name}

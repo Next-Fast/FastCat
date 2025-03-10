@@ -13,7 +13,7 @@ function ImageContainer({ image }: { image: string | undefined }) {
             {image && (
                 <Image
                     removeWrapper={true}
-                    className="absolute inset-0 w-full h-full -z-[0] overflow-hidden object-cover "
+                    className="absolute inset-0 w-full h-full -z-0 overflow-hidden object-cover "
                     src={image}
                     alt="Background"
                 />
@@ -32,7 +32,7 @@ export function PageLayout({ props, children, className }: { props: PageLayoutPr
             </header>
 
             <div className={clsx('Page Main relative rounded-3xl ml-3 mt-1 w-[95%] h-[31.35rem]',
-                !props.image && "bg-gradient-to-tr from-white to-zinc-100",
+                !props.image && "bg-linear-to-tr from-white to-zinc-100",
             )}>
                 <ImageContainer image={props.image} />
 
