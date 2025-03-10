@@ -8,6 +8,7 @@ import { TanStackRouterVite } from '@tanstack/router-plugin/vite'
 import eslint from 'vite-plugin-eslint2'
 import sassDts from 'vite-plugin-sass-dts'
 import { NodePackageImporter } from 'sass-embedded'
+import tailwindcss from '@tailwindcss/vite'
 
 // @ts-expect-error process is a nodejs global
 const host = process.env.TAURI_DEV_HOST;
@@ -75,6 +76,7 @@ export default defineConfig(async () => {
             build: false,
           }
         ),
+        tailwindcss(),
         isDev && devtools(),
       ],
     envPrefix: ["VITE_", "IS_"],
