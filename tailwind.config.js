@@ -1,4 +1,4 @@
-const { nextui } = require("@nextui-org/theme");
+/* const { nextui } = require("@nextui-org/theme"); */
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -12,6 +12,6 @@ export default {
   	
   	}
   },
-  plugins: [nextui(), require("tailwindcss-animate")],
+  plugins: [/* nextui(), */ require("tailwindcss-animate")],
 }
 
