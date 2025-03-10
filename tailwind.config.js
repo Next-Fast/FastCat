@@ -12,6 +12,6 @@ export default {
   	
   	}
   },
-  plugins: [/* nextui(), */ require("tailwindcss-animate")],
+  plugins: [/* nextui(), */ /* require("tailwindcss-animate") */],
 }
 
