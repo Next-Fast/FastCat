@@ -36,6 +36,7 @@ function RootComponent() {
           <HeroUIProvider 
             navigate={(to, options) => router.navigate({ to, ...options })}
             useHref={(to) => router.buildLocation({ to }).href}
+            className='light'
           >
             <Layout>
               <AnimeOutlet />
