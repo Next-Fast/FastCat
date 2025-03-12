@@ -15,7 +15,19 @@
     "dialog:default",
     "deep-link:default",
     "shell:default",
-    "fs:default",
-    "http:default"
+    "fs:allow-mkdir",
+    "fs:allow-exists",
+    "fs:read-all",
+    "fs:write-all",
+    "fs:allow-copy-file",
+    "fs:allow-rename",
+    "fs:allow-appdata-write-recursive",
+    "fs:allow-appdata-read-recursive",
+    "fs:allow-config-read-recursive",
+    "fs:allow-config-write-recursive",
+    "fs:allow-resource-read-recursive",
+    "core:resources:default",
+    "http:default",
+    "deep-link:default"
   ]
 }

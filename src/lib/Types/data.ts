@@ -1,4 +1,4 @@
-import { LoaderType, ModDownloadSource, SuprrortLanguage } from ".";
+import { LoaderType, ModDownloadSource, StorePlatrom, SuprrortLanguage } from ".";
 
 export interface ModInfo {
     Name: string;
@@ -8,18 +8,21 @@ export interface ModInfo {
     Languages: SuprrortLanguage[] | SuprrortLanguage;
     Dependencies?: DependencyInfo[];
     Loader: LoaderType;
-    DownloadSource: ModDownloadSource;
+    DownloadSource: ModDownloadSource | [];
     DownloadLink?: string;
     MarkdownPath?: string;
     imagePath?: string;
 }
 
+export interface AssemblyHash {
+    Platform: StorePlatrom;
+    Version: string;
+    Hash: string;
+}
+
 export interface DependencyInfo {
     Name: string;
     Version: string;
-    IsMod: boolean;
-
-    TargetVersions?: string[];
 }
 
 export interface BepInExInfo {
@@ -33,6 +36,7 @@ export interface InfoVersion
 {
     BepInEx: number,
     Mods: number,
+    Hash: number,
 }
 
 export class DefaultBepInExInfo implements BepInExInfo {

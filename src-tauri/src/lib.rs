@@ -1,11 +1,12 @@
 mod config;
 mod utils;
 
+use eyre::Context;
 use tauri::AppHandle;
 
 fn steup(app: &AppHandle) {
-    config::steup(app);
-    return;
+    config::steup(app).context("Failed to setup config").unwrap();
+    utils::deeplink::setup(app).context("Failed to setup deeplink").unwrap();
 }
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
@@ -26,9 +27,10 @@ pub fn run() {
             config::commands::region_config_path,
             config::commands::launch_game,
             config::commands::get_lang,
+            config::commands::has_exe,
             utils::commands::open_dir,
-            utils::commands::get_info_version,
-            utils::commands::get_local_info_version,
+            utils::commands::get_github_version,
+            utils::commands::get_local_version,
             utils::commands::get_ping_latest,
         ])
         .setup(|app| {

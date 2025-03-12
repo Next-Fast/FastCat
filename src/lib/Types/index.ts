@@ -2,11 +2,11 @@ export * from "./config"
 export * from "./data"
 export * from "./server"
 
-export enum ManagerMode {
+/* export enum ManagerMode {
     SingleVersion = "single",
     MutlingVersion = "mutling",
     NoSet = "no",
-}
+} */
 
 export enum StorePlatrom {
     Epic = "epic",

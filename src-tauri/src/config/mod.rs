@@ -5,6 +5,7 @@ use std::{
     sync::Mutex,
 };
 
+use eyre::{anyhow, Context};
 use serde::{Deserialize, Serialize};
 use tauri::{AppHandle, Manager};
 
@@ -15,13 +16,15 @@ use crate::utils::{
 
 pub mod commands;
 
-pub fn steup(app: &AppHandle) {
-    let config = ManagerConfig::create(app);
+pub fn steup(app: &AppHandle) -> eyre::Result<()> {
+    let config = ManagerConfig::create(app)?;
 
     app.manage(Mutex::new(config));
+    Ok(())
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(default = "ManagerConfig::new")]
 pub struct ManagerConfig {
     lang: String,
     #[serde(rename = "GameConfig")]
@@ -31,6 +34,7 @@ pub struct ManagerConfig {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(default = "GameConfig::new")]
 pub struct GameConfig {
     #[serde(rename = "DirPath")]
     dir_path: PathBuf,
@@ -53,18 +57,22 @@ impl ManagerConfig {
         }
     }
 
-    fn create(app: &AppHandle) -> Self {
+    fn create(app: &AppHandle) -> eyre::Result<Self> {
         let config_path = app.path().app_config_dir().unwrap().join("config.json");
         fs::create_dir_all(config_path.parent().unwrap())
-            .expect("Failed to create config.json directory");
+            .context("Failed to create config.json directory")?;
 
         if !config_path.exists() {
             let value = Self::new();
-            write_json(config_path, &value).expect("Failed to write config.json");
-            return value;
+            write_json(config_path, &value).context("Failed to write config.json")?;
+            
+            Ok(value)
         } else {
-            let value = read_json(config_path).expect("Failed to read config.json");
-            return value;
+            let value : Self = read_json(&config_path).map_err(|err| {
+                    anyhow!("failed to read settings: {} (at {})\n\n", err, config_path.display())
+                })?;
+
+            Ok(value)
         }
     }
 

@@ -1,8 +1,8 @@
 import { get_config, set_config } from "./tauri-constant";
 
 // get from https://github.akams.cn/
-export const ALL_PROXY_URL : { name: string, url: string }[] = [
-    { name: 'github.com', url: '' },
+export const ALL_PROXY_URL : { name: string, url: string | undefined }[] = [
+    { name: 'github.com', url: undefined },
     { name: 'moeyy.xyz', url: 'https://github.moeyy.xyz'},
     { name: 'llkk.cc', url: 'https://gh.llkk.cc'},
     { name: 'ghproxy.cn', url: 'https://ghproxy.cn'},
@@ -19,6 +19,9 @@ export let PROXY = ALL_PROXY_URL.find(async item => item.name == (await get_conf
 export function getProxyUrl(url : string)
 {
     if (!url.startsWith('https://github.com') && !url.startsWith('https://raw.githubusercontent.com'))
+        return url;
+
+    if (!PROXY.url)
         return url;
 
     return `${PROXY.url}/${url}`;

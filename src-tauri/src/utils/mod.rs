@@ -5,6 +5,7 @@ use serde::{Deserialize, Serialize};
 pub mod commands;
 pub mod file;
 pub mod pathget;
+pub mod deeplink;
 
 pub type StateMutex<'r, S> = tauri::State<'r, Mutex<S>>;
 
@@ -14,4 +15,6 @@ pub struct InfoVersion{
     pub bepinex: i32,
     #[serde(rename = "Mods")]
     pub mods: i32,
+    #[serde(rename = "Hash")]
+    pub hash: i32
 }

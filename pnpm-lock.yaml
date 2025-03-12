@@ -1043,6 +1043,335 @@ packages:
       react: '>=18 || >=19.0.0-rc.0'
       react-dom: '>=18 || >=19.0.0-rc.0'
 
+  '@heroui/aria-utils@https://pkg.pr.new/heroui-inc/heroui/@heroui/aria-utils@a060b85ee66c1851e848f006ec4f8d61e955fcc7':
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/aria-utils@a060b85ee66c1851e848f006ec4f8d61e955fcc7}
+    version: 2.2.8
+    peerDependencies:
+      react: '>=18 || >=19.0.0-rc.0'
+      react-dom: '>=18 || >=19.0.0-rc.0'
+
+  '@heroui/autocomplete@https://pkg.pr.new/@heroui/autocomplete@4656':
+    resolution: {tarball: https://pkg.pr.new/@heroui/autocomplete@4656}
+    version: 2.3.11
+    peerDependencies:
+      '@heroui/system': '>=2.4.0'
+      '@heroui/theme': '>=2.4.0'
+      framer-motion: '>=11.5.6 || >=12.0.0-alpha.1'
+      react: '>=18 || >=19.0.0-rc.0'
+      react-dom: '>=18 || >=19.0.0-rc.0'
+
+  '@heroui/breadcrumbs@https://pkg.pr.new/@heroui/breadcrumbs@4656':
+    resolution: {tarball: https://pkg.pr.new/@heroui/breadcrumbs@4656}
+    version: 2.2.7
+    peerDependencies:
+      '@heroui/system': '>=2.4.0'
+      '@heroui/theme': '>=2.4.0'
+      react: '>=18 || >=19.0.0-rc.0'
+      react-dom: '>=18 || >=19.0.0-rc.0'
+
+  '@heroui/button@https://pkg.pr.new/@heroui/button@4656':
+    resolution: {tarball: https://pkg.pr.new/@heroui/button@4656}
+    version: 2.2.10
+    peerDependencies:
+      '@heroui/system': '>=2.4.0'
+      '@heroui/theme': '>=2.4.0'
+      framer-motion: '>=11.5.6 || >=12.0.0-alpha.1'
+      react: '>=18 || >=19.0.0-rc.0'
+      react-dom: '>=18 || >=19.0.0-rc.0'
+
+  '@heroui/button@https://pkg.pr.new/heroui-inc/heroui/@heroui/button@a060b85ee66c1851e848f006ec4f8d61e955fcc7':
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/button@a060b85ee66c1851e848f006ec4f8d61e955fcc7}
+    version: 2.2.10
+    peerDependencies:
+      '@heroui/system': '>=2.4.0'
+      '@heroui/theme': '>=2.4.0'
+      framer-motion: '>=11.5.6 || >=12.0.0-alpha.1'
+      react: '>=18 || >=19.0.0-rc.0'
+      react-dom: '>=18 || >=19.0.0-rc.0'
+
+  '@heroui/card@https://pkg.pr.new/@heroui/card@4656':
+    resolution: {tarball: https://pkg.pr.new/@heroui/card@4656}
+    version: 2.2.10
+    peerDependencies:
+      '@heroui/system': '>=2.4.0'
+      '@heroui/theme': '>=2.4.0'
+      framer-motion: '>=11.5.6 || >=12.0.0-alpha.1'
+      react: '>=18 || >=19.0.0-rc.0'
+      react-dom: '>=18 || >=19.0.0-rc.0'
+
+  '@heroui/divider@https://pkg.pr.new/@heroui/divider@4656':
+    resolution: {tarball: https://pkg.pr.new/@heroui/divider@4656}
+    version: 2.2.6
+    peerDependencies:
+      '@heroui/theme': '>=2.4.0'
+      react: '>=18 || >=19.0.0-rc.0'
+      react-dom: '>=18 || >=19.0.0-rc.0'
+
+  '@heroui/divider@https://pkg.pr.new/heroui-inc/heroui/@heroui/divider@a060b85ee66c1851e848f006ec4f8d61e955fcc7':
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/divider@a060b85ee66c1851e848f006ec4f8d61e955fcc7}
+    version: 2.2.6
+    peerDependencies:
+      '@heroui/theme': '>=2.4.0'
+      react: '>=18 || >=19.0.0-rc.0'
+      react-dom: '>=18 || >=19.0.0-rc.0'
+
+  '@heroui/dom-animation@https://pkg.pr.new/heroui-inc/heroui/@heroui/dom-animation@a060b85ee66c1851e848f006ec4f8d61e955fcc7':
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/dom-animation@a060b85ee66c1851e848f006ec4f8d61e955fcc7}
+    version: 2.1.2
+    peerDependencies:
+      framer-motion: '>=11.5.6 || >=12.0.0-alpha.1'
+
+  '@heroui/form@https://pkg.pr.new/heroui-inc/heroui/@heroui/form@a060b85ee66c1851e848f006ec4f8d61e955fcc7':
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/form@a060b85ee66c1851e848f006ec4f8d61e955fcc7}
+    version: 2.1.9
+    peerDependencies:
+      '@heroui/system': '>=2.4.0'
+      '@heroui/theme': '>=2.4.0'
+      react: '>=18'
+      react-dom: '>=18'
+
+  '@heroui/framer-utils@https://pkg.pr.new/heroui-inc/heroui/@heroui/framer-utils@a060b85ee66c1851e848f006ec4f8d61e955fcc7':
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/framer-utils@a060b85ee66c1851e848f006ec4f8d61e955fcc7}
+    version: 2.1.7
+    peerDependencies:
+      framer-motion: '>=11.5.6 || >=12.0.0-alpha.1'
+      react: '>=18 || >=19.0.0-rc.0'
+      react-dom: '>=18 || >=19.0.0-rc.0'
+
+  '@heroui/image@https://pkg.pr.new/@heroui/image@4656':
+    resolution: {tarball: https://pkg.pr.new/@heroui/image@4656}
+    version: 2.2.6
+    peerDependencies:
+      '@heroui/system': '>=2.4.0'
+      '@heroui/theme': '>=2.4.0'
+      react: '>=18 || >=19.0.0-rc.0'
+      react-dom: '>=18 || >=19.0.0-rc.0'
+
+  '@heroui/input@https://pkg.pr.new/@heroui/input@4656':
+    resolution: {tarball: https://pkg.pr.new/@heroui/input@4656}
+    version: 2.4.10
+    peerDependencies:
+      '@heroui/system': '>=2.4.8'
+      '@heroui/theme': '>=2.4.7'
+      react: '>=18 || >=19.0.0-rc.0'
+      react-dom: '>=18 || >=19.0.0-rc.0'
+
+  '@heroui/input@https://pkg.pr.new/heroui-inc/heroui/@heroui/input@a060b85ee66c1851e848f006ec4f8d61e955fcc7':
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/input@a060b85ee66c1851e848f006ec4f8d61e955fcc7}
+    version: 2.4.10
+    peerDependencies:
+      '@heroui/system': '>=2.4.8'
+      '@heroui/theme': '>=2.4.7'
+      react: '>=18 || >=19.0.0-rc.0'
+      react-dom: '>=18 || >=19.0.0-rc.0'
+
+  '@heroui/link@https://pkg.pr.new/@heroui/link@4656':
+    resolution: {tarball: https://pkg.pr.new/@heroui/link@4656}
+    version: 2.2.8
+    peerDependencies:
+      '@heroui/system': '>=2.4.0'
+      '@heroui/theme': '>=2.4.0'
+      react: '>=18 || >=19.0.0-rc.0'
+      react-dom: '>=18 || >=19.0.0-rc.0'
+
+  '@heroui/listbox@https://pkg.pr.new/heroui-inc/heroui/@heroui/listbox@a060b85ee66c1851e848f006ec4f8d61e955fcc7':
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/listbox@a060b85ee66c1851e848f006ec4f8d61e955fcc7}
+    version: 2.3.10
+    peerDependencies:
+      '@heroui/system': '>=2.4.0'
+      '@heroui/theme': '>=2.4.0'
+      react: '>=18 || >=19.0.0-rc.0'
+      react-dom: '>=18 || >=19.0.0-rc.0'
+
+  '@heroui/popover@https://pkg.pr.new/heroui-inc/heroui/@heroui/popover@a060b85ee66c1851e848f006ec4f8d61e955fcc7':
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/popover@a060b85ee66c1851e848f006ec4f8d61e955fcc7}
+    version: 2.3.10
+    peerDependencies:
+      '@heroui/system': '>=2.4.0'
+      '@heroui/theme': '>=2.4.0'
+      framer-motion: '>=11.5.6 || >=12.0.0-alpha.1'
+      react: '>=18 || >=19.0.0-rc.0'
+      react-dom: '>=18 || >=19.0.0-rc.0'
+
+  '@heroui/progress@https://pkg.pr.new/@heroui/progress@4656':
+    resolution: {tarball: https://pkg.pr.new/@heroui/progress@4656}
+    version: 2.2.7
+    peerDependencies:
+      '@heroui/system': '>=2.4.0'
+      '@heroui/theme': '>=2.4.0'
+      react: '>=18 || >=19.0.0-rc.0'
+      react-dom: '>=18 || >=19.0.0-rc.0'
+
+  '@heroui/react-rsc-utils@https://pkg.pr.new/heroui-inc/heroui/@heroui/react-rsc-utils@a060b85ee66c1851e848f006ec4f8d61e955fcc7':
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/react-rsc-utils@a060b85ee66c1851e848f006ec4f8d61e955fcc7}
+    version: 2.1.2
+    peerDependencies:
+      react: '>=18 || >=19.0.0-rc.0'
+
+  '@heroui/react-utils@https://pkg.pr.new/heroui-inc/heroui/@heroui/react-utils@a060b85ee66c1851e848f006ec4f8d61e955fcc7':
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/react-utils@a060b85ee66c1851e848f006ec4f8d61e955fcc7}
+    version: 2.1.4
+    peerDependencies:
+      react: '>=18 || >=19.0.0-rc.0'
+
+  '@heroui/ripple@https://pkg.pr.new/heroui-inc/heroui/@heroui/ripple@a060b85ee66c1851e848f006ec4f8d61e955fcc7':
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/ripple@a060b85ee66c1851e848f006ec4f8d61e955fcc7}
+    version: 2.2.8
+    peerDependencies:
+      '@heroui/system': '>=2.4.0'
+      '@heroui/theme': '>=2.4.0'
+      framer-motion: '>=11.5.6 || >=12.0.0-alpha.1'
+      react: '>=18 || >=19.0.0-rc.0'
+      react-dom: '>=18 || >=19.0.0-rc.0'
+
+  '@heroui/scroll-shadow@https://pkg.pr.new/heroui-inc/heroui/@heroui/scroll-shadow@a060b85ee66c1851e848f006ec4f8d61e955fcc7':
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/scroll-shadow@a060b85ee66c1851e848f006ec4f8d61e955fcc7}
+    version: 2.3.6
+    peerDependencies:
+      '@heroui/system': '>=2.4.0'
+      '@heroui/theme': '>=2.4.0'
+      react: '>=18 || >=19.0.0-rc.0'
+      react-dom: '>=18 || >=19.0.0-rc.0'
+
+  '@heroui/select@https://pkg.pr.new/@heroui/select@4656':
+    resolution: {tarball: https://pkg.pr.new/@heroui/select@4656}
+    version: 2.4.10
+    peerDependencies:
+      '@heroui/system': '>=2.4.8'
+      '@heroui/theme': '>=2.4.7'
+      framer-motion: '>=11.5.6 || >=12.0.0-alpha.1'
+      react: '>=18 || >=19.0.0-rc.0'
+      react-dom: '>=18 || >=19.0.0-rc.0'
+
+  '@heroui/shared-icons@https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-icons@a060b85ee66c1851e848f006ec4f8d61e955fcc7':
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-icons@a060b85ee66c1851e848f006ec4f8d61e955fcc7}
+    version: 2.1.2
+    peerDependencies:
+      react: '>=18 || >=19.0.0-rc.0'
+
+  '@heroui/shared-utils@https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-utils@a060b85ee66c1851e848f006ec4f8d61e955fcc7':
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-utils@a060b85ee66c1851e848f006ec4f8d61e955fcc7}
+    version: 2.1.3
+
+  '@heroui/spacer@https://pkg.pr.new/@heroui/spacer@4656':
+    resolution: {tarball: https://pkg.pr.new/@heroui/spacer@4656}
+    version: 2.2.7
+    peerDependencies:
+      '@heroui/theme': '>=2.4.0'
+      react: '>=18 || >=19.0.0-rc.0'
+      react-dom: '>=18 || >=19.0.0-rc.0'
+
+  '@heroui/spinner@https://pkg.pr.new/heroui-inc/heroui/@heroui/spinner@a060b85ee66c1851e848f006ec4f8d61e955fcc7':
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/spinner@a060b85ee66c1851e848f006ec4f8d61e955fcc7}
+    version: 2.2.7
+    peerDependencies:
+      '@heroui/theme': '>=2.4.7'
+      react: '>=18 || >=19.0.0-rc.0'
+      react-dom: '>=18 || >=19.0.0-rc.0'
+
+  '@heroui/switch@https://pkg.pr.new/@heroui/switch@4656':
+    resolution: {tarball: https://pkg.pr.new/@heroui/switch@4656}
+    version: 2.2.9
+    peerDependencies:
+      '@heroui/system': '>=2.4.0'
+      '@heroui/theme': '>=2.4.3'
+      react: '>=18 || >=19.0.0-rc.0'
+      react-dom: '>=18 || >=19.0.0-rc.0'
+
+  '@heroui/system-rsc@https://pkg.pr.new/heroui-inc/heroui/@heroui/system-rsc@a060b85ee66c1851e848f006ec4f8d61e955fcc7':
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/system-rsc@a060b85ee66c1851e848f006ec4f8d61e955fcc7}
+    version: 2.3.6
+    peerDependencies:
+      '@heroui/theme': '>=2.4.0'
+      react: '>=18 || >=19.0.0-rc.0'
+
+  '@heroui/system@https://pkg.pr.new/@heroui/system@4656':
+    resolution: {tarball: https://pkg.pr.new/@heroui/system@4656}
+    version: 2.4.7
+    peerDependencies:
+      framer-motion: '>=11.5.6 || >=12.0.0-alpha.1'
+      react: '>=18 || >=19.0.0-rc.0'
+      react-dom: '>=18 || >=19.0.0-rc.0'
+
+  '@heroui/system@https://pkg.pr.new/heroui-inc/heroui/@heroui/system@a060b85ee66c1851e848f006ec4f8d61e955fcc7':
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/system@a060b85ee66c1851e848f006ec4f8d61e955fcc7}
+    version: 2.4.7
+    peerDependencies:
+      framer-motion: '>=11.5.6 || >=12.0.0-alpha.1'
+      react: '>=18 || >=19.0.0-rc.0'
+      react-dom: '>=18 || >=19.0.0-rc.0'
+
+  '@heroui/theme@https://pkg.pr.new/@heroui/theme@4656':
+    resolution: {tarball: https://pkg.pr.new/@heroui/theme@4656}
+    version: 2.4.6
+    peerDependencies:
+      tailwindcss: '>=4.0.0'
+
+  '@heroui/tooltip@https://pkg.pr.new/@heroui/tooltip@4656':
+    resolution: {tarball: https://pkg.pr.new/@heroui/tooltip@4656}
+    version: 2.2.8
+    peerDependencies:
+      '@heroui/system': '>=2.4.0'
+      '@heroui/theme': '>=2.4.0'
+      framer-motion: '>=11.5.6 || >=12.0.0-alpha.1'
+      react: '>=18 || >=19.0.0-rc.0'
+      react-dom: '>=18 || >=19.0.0-rc.0'
+
+  '@heroui/use-aria-button@https://pkg.pr.new/heroui-inc/heroui/@heroui/use-aria-button@a060b85ee66c1851e848f006ec4f8d61e955fcc7':
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/use-aria-button@a060b85ee66c1851e848f006ec4f8d61e955fcc7}
+    version: 2.2.5
+    peerDependencies:
+      react: '>=18 || >=19.0.0-rc.0'
+
+  '@heroui/use-aria-link@https://pkg.pr.new/heroui-inc/heroui/@heroui/use-aria-link@a060b85ee66c1851e848f006ec4f8d61e955fcc7':
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/use-aria-link@a060b85ee66c1851e848f006ec4f8d61e955fcc7}
+    version: 2.2.6
+    peerDependencies:
+      react: '>=18 || >=19.0.0-rc.0'
+
+  '@heroui/use-aria-multiselect@https://pkg.pr.new/heroui-inc/heroui/@heroui/use-aria-multiselect@a060b85ee66c1851e848f006ec4f8d61e955fcc7':
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/use-aria-multiselect@a060b85ee66c1851e848f006ec4f8d61e955fcc7}
+    version: 2.4.4
+    peerDependencies:
+      react: '>=18 || >=19.0.0-rc.0'
+      react-dom: '>=18 || >=19.0.0-rc.0'
+
+  '@heroui/use-data-scroll-overflow@https://pkg.pr.new/heroui-inc/heroui/@heroui/use-data-scroll-overflow@a060b85ee66c1851e848f006ec4f8d61e955fcc7':
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/use-data-scroll-overflow@a060b85ee66c1851e848f006ec4f8d61e955fcc7}
+    version: 2.2.3
+    peerDependencies:
+      react: '>=18 || >=19.0.0-rc.0'
+
+  '@heroui/use-image@https://pkg.pr.new/heroui-inc/heroui/@heroui/use-image@a060b85ee66c1851e848f006ec4f8d61e955fcc7':
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/use-image@a060b85ee66c1851e848f006ec4f8d61e955fcc7}
+    version: 2.1.3
+    peerDependencies:
+      react: '>=18 || >=19.0.0-rc.0'
+
+  '@heroui/use-is-mobile@https://pkg.pr.new/heroui-inc/heroui/@heroui/use-is-mobile@a060b85ee66c1851e848f006ec4f8d61e955fcc7':
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/use-is-mobile@a060b85ee66c1851e848f006ec4f8d61e955fcc7}
+    version: 2.2.3
+    peerDependencies:
+      react: '>=18 || >=19.0.0-rc.0'
+
+  '@heroui/use-is-mounted@https://pkg.pr.new/heroui-inc/heroui/@heroui/use-is-mounted@a060b85ee66c1851e848f006ec4f8d61e955fcc7':
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/use-is-mounted@a060b85ee66c1851e848f006ec4f8d61e955fcc7}
+    version: 2.1.2
+    peerDependencies:
+      react: '>=18 || >=19.0.0-rc.0'
+
+  '@heroui/use-measure@https://pkg.pr.new/heroui-inc/heroui/@heroui/use-measure@a060b85ee66c1851e848f006ec4f8d61e955fcc7':
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/use-measure@a060b85ee66c1851e848f006ec4f8d61e955fcc7}
+    version: 2.1.2
+    peerDependencies:
+      react: '>=18 || >=19.0.0-rc.0'
+
+  '@heroui/use-safe-layout-effect@https://pkg.pr.new/heroui-inc/heroui/@heroui/use-safe-layout-effect@a060b85ee66c1851e848f006ec4f8d61e955fcc7':
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/use-safe-layout-effect@a060b85ee66c1851e848f006ec4f8d61e955fcc7}
+    version: 2.1.2
+    peerDependencies:
+      react: '>=18 || >=19.0.0-rc.0'
+
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
     engines: {node: '>=18.18.0'}

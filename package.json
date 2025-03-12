@@ -26,6 +26,8 @@
     "@tauri-apps/plugin-log": "^2.3.0",
     "@tauri-apps/plugin-os": "^2.2.1",
     "@tauri-apps/plugin-shell": "^2.2.0",
+    "@tailwindcss/postcss": "^4.0.6",
+    "@tailwindcss/vite": "4.0.6",
     "ahooks": "^3.8.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -72,9 +74,6 @@
     "vite-tsconfig-paths": "^5.1.4"
   },
   "packageManager": "pnpm@10.6.2",
-  "engines": {
-    "node": ">=20.0.0"
-  },
   "overrides": {
     "ahooks": {
       "react": "$react",
