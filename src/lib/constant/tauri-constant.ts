@@ -10,6 +10,10 @@ export const set_config = async (
     await Invoke_Command("set_config", { lang : set_lang, game : _game, proxy : _proxy });
 }
 
+export const set_proxy_url = async (proxy : string) => {
+    await Invoke_Command("set_proxy_url", { url : proxy });
+}
+
 export const get_config = async () => {
     return await Invoke_Command<ManagerConfig>("get_config");
 }

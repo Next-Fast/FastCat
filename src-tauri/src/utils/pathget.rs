@@ -1,5 +1,6 @@
 use std::path::PathBuf;
 
+use tauri::{path::BaseDirectory, AppHandle, Manager};
 use windows_registry::*;
 
 pub fn get_steam_path() -> Result<PathBuf> {
@@ -13,6 +14,16 @@ pub fn get_steam_path() -> Result<PathBuf> {
     return Ok(PathBuf::from(path));
 }
 
+pub fn get_steam_exe_path() -> Result<PathBuf> {
+    let steam_path = get_steam_path()?;
+    let steam_exe_path = steam_path.join("steam.exe");
+    if steam_exe_path.exists() {
+        return Ok(steam_exe_path);
+    }
+
+    return Ok(PathBuf::new());
+}
+
 pub fn get_game_path() -> Result<PathBuf> {
     let steam_path = get_steam_path()?;
     let game_path = steam_path.join("steamapps/common/Among Us");
@@ -24,6 +35,41 @@ pub fn get_game_path() -> Result<PathBuf> {
     }
 
     return Ok(PathBuf::new());
+}
+
+pub fn get_bepinex_dir(app : &AppHandle) -> PathBuf {
+    let path = app
+        .path()
+        .resolve("AllBepInEx", BaseDirectory::AppData)
+        .unwrap();
+
+    path
+}
+
+pub fn get_dotnet_dir(app : &AppHandle) -> PathBuf {
+    let path = app
+        .path()
+        .resolve("AllDotnet", BaseDirectory::AppData)
+        .unwrap();
+
+    path
+}
+
+pub fn get_bepinex_dotnet_dir(app : &AppHandle) -> PathBuf {
+    get_dotnet_dir(app).join("BepInEx")
+}
+
+pub fn get_doorstop_path(app : &AppHandle) -> PathBuf {
+    get_bepinex_dir(app).join("winhttp.dll")
+}
+
+pub fn get_mods_dir(app : &AppHandle) -> PathBuf {
+    let path = app
+        .path()
+        .resolve("AllMods", BaseDirectory::AppData)
+        .unwrap();
+
+    path
 }
 
 #[allow(non_snake_case)]

@@ -23,6 +23,7 @@ pub fn run() {
         .invoke_handler(tauri::generate_handler![
             config::commands::get_config,
             config::commands::set_config,
+            config::commands::set_proxy_url,
             config::commands::has_bepinex,
             config::commands::region_config_path,
             config::commands::launch_game,

@@ -1,7 +1,9 @@
-use std::process::Command;
-use tauri::AppHandle;
+use std::{fs, io, process::Command};
+use serde::de::value;
+use tauri::{ AppHandle};
+use tauri_plugin_fs::Fs;
 
-use crate::utils::{pathget::get_LocalLow_path, StateMutex};
+use crate::utils::{pathget::{get_LocalLow_path, get_doorstop_path, get_steam_exe_path}, StateMutex};
 
 use super::{GameConfig, ManagerConfig};
 
@@ -36,6 +38,21 @@ pub fn set_config(
 }
 
 #[tauri::command]
+pub fn set_proxy_url(url : String, config: StateMutex<ManagerConfig>, app: AppHandle) {
+    let mut local = config.lock().unwrap();
+    let set_url;
+    if url != "" {
+        set_url = url + "/";
+    }
+    else {
+        set_url = "".to_string();
+    }
+    
+    local.set_proxy_url(set_url);
+    local.save(&app);
+}
+
+#[tauri::command]
 pub fn has_bepinex(config: StateMutex<ManagerConfig>) -> bool {
     config.lock().unwrap().game_config.has_bepinex()
 }
@@ -54,21 +71,56 @@ pub fn region_config_path() -> String {
 
 #[tauri::command]
 pub async fn launch_game<'a>(
+    app: AppHandle,
     moded: bool,
     lock_config: StateMutex<'a, ManagerConfig>,
 ) -> Result<(), String> {
-    let mut config = lock_config.lock().unwrap();
-    let exe_path = config.game_config.exe_path();
-    let mut command = Command::new(exe_path);
-    let mut winhttp_path = config.game_config.dir_path.clone();
-    winhttp_path.push("winhttp.dll");
-
-    if winhttp_path.exists() {
-        command.args(["--doorstop-enabled", &moded.to_string()]);
-    }
+    let config = lock_config.lock().unwrap();
+    let mut  command = get_lanch_command(app, config.clone(), moded);
 
     command.spawn().expect("Failed to launch game");
     Ok(())
+}
+
+fn get_lanch_command(app: AppHandle, mut config: ManagerConfig, moded: bool) -> Command {
+    let mut is_steam = false;
+    let mut args = vec![];
+    let mut winhttp_path = config.game_config.dir_path.clone();
+    winhttp_path.push("winhttp.dll");
+
+    if let Some(parent) = config.game_config.dir_path.parent() {
+        if parent.file_name().unwrap_or_default() == "common" {
+            is_steam = true;
+        }
+    }
+    let mut command;
+    if is_steam {
+        command = Command::new(get_steam_exe_path().unwrap());
+        args.push("-applaunch 945360".to_string());
+    }
+    else {
+        command = Command::new(config.game_config.exe_path());
+        let id_path = config.game_config.dir_path.join("steam_appid.txt");
+        if !id_path.exists() {
+            fs::write(id_path, "945360").expect("Failed to write steam_appid.txt");
+        }
+    }
+
+    if moded && !winhttp_path.exists() {
+        let doorstop_path = get_doorstop_path(&app);
+        if doorstop_path.exists() {
+            // 复制文件
+            fs::copy(doorstop_path, config.game_config.dir_path.join("winhttp.dll"))
+                .expect("Failed to copy winhttp.dll");
+        }
+    }
+
+    args.push("--doorstop-enabled".to_string());
+    args.push(moded.to_string());
+
+    command.args(args);
+
+    command
 }
 
 #[tauri::command]

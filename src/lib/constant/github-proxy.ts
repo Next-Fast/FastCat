@@ -13,6 +13,7 @@ export const ALL_PROXY_URL : { name: string, url: string | undefined }[] = [
 export async function set_proxy(name: string) {
     PROXY = ALL_PROXY_URL.find(item => item.name == name) || PROXY;
     await set_config(undefined, undefined, name);
+    await set_proxy(PROXY.url || '');
 }
 
 export let PROXY = ALL_PROXY_URL.find(async item => item.name == (await get_config())?.GithubProxy) || ALL_PROXY_URL[0];

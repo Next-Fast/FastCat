@@ -1,6 +1,5 @@
 // Style
-import "./styles/globals.css";
-
+import "@/styles/tailwindcss.css";
 // React
 import React from "react";
 import ReactDOM from "react-dom/client";

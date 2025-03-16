@@ -28,9 +28,11 @@ pub fn steup(app: &AppHandle) -> eyre::Result<()> {
 pub struct ManagerConfig {
     lang: String,
     #[serde(rename = "GameConfig")]
-    game_config: GameConfig,
+    pub game_config: GameConfig,
     #[serde(rename = "GithubProxy")]
-    github_proxy: String
+    github_proxy: String,
+    #[serde(rename = "ProxyUrl")]
+    pub proxy_url: String,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -40,6 +42,7 @@ pub struct GameConfig {
     dir_path: PathBuf,
     #[serde(rename = "Loader")]
     loader: LoaderType,
+    loader_version: String,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -53,7 +56,8 @@ impl ManagerConfig {
         Self {
             lang: "en".to_string(),
             game_config: GameConfig::new(),
-            github_proxy: "github.com".to_string()
+            github_proxy: "github.com".to_string(),
+            proxy_url: "".to_string(),
         }
     }
 
@@ -80,6 +84,10 @@ impl ManagerConfig {
         self.github_proxy = proxy;
     }
 
+    pub fn set_proxy_url(&mut self, proxy: String) {
+        self.proxy_url = proxy;
+    }
+
     pub fn set_lang(&mut self, set_lang: String) {
         self.lang = set_lang;
     }
@@ -102,6 +110,7 @@ impl GameConfig {
         Self {
             dir_path: get_game_path().unwrap(),
             loader: LoaderType::BepInEx,
+            loader_version: "Unkown".to_owned()
         }
     }
 
