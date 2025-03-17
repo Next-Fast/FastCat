@@ -1,6 +1,6 @@
 # FastCat
 
-FastCat 开源使用Tarui v2 + react + rust 开发的桌面Among Us模组管理器  
+FastCat 是使用 Tarui v2 + react + rust 开发的桌面 Among Us 模组管理器  
 
 使用[GPLv3](/LICENSE)协议开源  
 
@@ -9,8 +9,6 @@ QQ群:[837094490](https://qm.qq.com/q/xgRhQ9pzhg)
 ## Dev
 
 提示:本项目包含子模块,请使用`git clone git@github.com:Next-Fast/FastCat.git --recursive`命令克隆仓库  
-
-等待Hero UI(原Next UI) 适配 TailWindCSS V4, https://github.com/heroui-inc/heroui/issues/4644  
 
 ### 预先准备
 

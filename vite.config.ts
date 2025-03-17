@@ -5,7 +5,6 @@ import AutoImport from 'unplugin-auto-import/vite'
 import svgr from "vite-plugin-svgr";
 import tsconfigPaths from "vite-tsconfig-paths";
 import { TanStackRouterVite } from '@tanstack/router-plugin/vite'
-import eslint from 'vite-plugin-eslint2'
 import sassDts from 'vite-plugin-sass-dts'
 import { NodePackageImporter } from 'sass-embedded'
 import tailwindcss from '@tailwindcss/vite'
@@ -67,14 +66,6 @@ export default defineConfig(async () => {
         svgr(),
         tsconfigPaths(),
         TanStackRouterVite(),
-        eslint(
-          {
-            include: ['src/**/*.{ts,tsx}'],
-            exclude: ['node_modules/**/*'],
-            dev: false,
-            build: false,
-          }
-        ),
         tailwindcss(),
         isDev && devtools(),
       ],
