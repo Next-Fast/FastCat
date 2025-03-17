@@ -1,9 +1,9 @@
-use std::{fs, io, process::Command};
+use std::{fmt::format, fs, io, process::Command};
 use serde::de::value;
 use tauri::{ AppHandle};
 use tauri_plugin_fs::Fs;
 
-use crate::utils::{pathget::{get_LocalLow_path, get_doorstop_path, get_steam_exe_path}, StateMutex};
+use crate::utils::{pathget::{get_LocalLow_path, get_bepinex_dir, get_doorstop_path, get_dotnet_dir, get_steam_exe_path}, StateMutex};
 
 use super::{GameConfig, ManagerConfig};
 
@@ -115,8 +115,16 @@ fn get_lanch_command(app: AppHandle, mut config: ManagerConfig, moded: bool) -> 
         }
     }
 
-    args.push("--doorstop-enabled".to_string());
-    args.push(moded.to_string());
+    args.push(format!("--doorstop-enabled {}", moded));
+
+    let target_assembly_path = get_bepinex_dir(&app).join("core/BepInEx.Unity.IL2CPP.dll").to_str().unwrap().to_string();
+    args.push(format!("--doorstop-target-assembly {}", target_assembly_path));
+    
+    let clr_dir = get_dotnet_dir(&app);
+    args.push(format!("--doorstop-clr-corlib-dir {}", clr_dir.to_str().unwrap().to_string()));
+
+    let clr_path = clr_dir.join("coreclr.dll");
+    args.push(format!("--doorstop-clr-runtime-coreclr-path {}", clr_path.to_str().unwrap().to_string()));
 
     command.args(args);
 

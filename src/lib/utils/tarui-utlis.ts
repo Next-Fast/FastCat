@@ -6,7 +6,7 @@ import { Is_Tauri } from "../../AppEnv";
 
 export type Tauri_Command = 
     "set_config" | "get_config" | "set_proxy_url" | "has_bepinex" | "region_config_path" | "launch_game" | "get_lang" |
-    "open_dir" | "get_github_version" | "get_local_version" | "get_ping_latest"
+    "open_dir" | "get_github_version" | "get_local_version" | "get_ping_latest" | "download_bepinex"
 ;
 
 export async function Invoke_Command<T>(command : Tauri_Command, args? : InvokeArgs, options? : InvokeOptions) : Promise<T | undefined>

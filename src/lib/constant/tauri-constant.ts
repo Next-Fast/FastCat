@@ -51,3 +51,7 @@ export const get_ping_latest = async (all : string[]) => {
     var latest = await Invoke_Command<string>("get_ping_latest", { urls: all });
     return "https://" + latest;
 }
+
+export const download_bepinex = async (Version : string, Release : boolean, Hash : string) => {
+    await Invoke_Command("download_bepinex", { version : Version, is_release : Release, hash : Hash });
+}

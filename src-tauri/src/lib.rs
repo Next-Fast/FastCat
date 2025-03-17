@@ -1,11 +1,13 @@
 mod config;
 mod utils;
+mod modmanager;
 
 use eyre::Context;
 use tauri::AppHandle;
 
 fn steup(app: &AppHandle) {
     config::steup(app).context("Failed to setup config").unwrap();
+    modmanager::steup(app).context("Failed to setup modmanager").unwrap();
     utils::deeplink::setup(app).context("Failed to setup deeplink").unwrap();
 }
 
@@ -33,6 +35,7 @@ pub fn run() {
             utils::commands::get_github_version,
             utils::commands::get_local_version,
             utils::commands::get_ping_latest,
+            utils::commands::download_bepinex,
         ])
         .setup(|app| {
             let handle = app.handle().clone();

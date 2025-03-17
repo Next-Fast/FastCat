@@ -1,7 +1,6 @@
-use std::{fmt::format, fs::{create_dir_all, File}, io::{self, Read, Seek, Write}, path::PathBuf, sync::Arc, time::Duration};
+use std::{fs::{create_dir_all, File}, io::{self, Read, Seek, Write}, path::PathBuf, sync::Arc, time::Duration};
 
 use eyre::Context;
-use serde::de::value;
 use tauri::{path::BaseDirectory, AppHandle, Manager};
 
 use tauri_plugin_http::reqwest;
@@ -53,8 +52,8 @@ pub fn get_local_version(app: AppHandle) -> InfoVersion {
 }
 
 #[tauri::command]
-pub async fn download_bepinex<'a>(app: &tauri::AppHandle, lock_config: StateMutex<'a, ManagerConfig>, version : String, is_release : bool,hash : String) -> Result<(), String> {
-    let mut config = lock_config.lock().unwrap();
+pub async fn download_bepinex<'a>(app: AppHandle, lock_config: StateMutex<'a, ManagerConfig>, version : String, is_release : bool, hash : String) -> Result<(), String> {
+    let config = lock_config.lock().unwrap().clone();
     let _url_prefix = match is_release {
         true => format!("{}https://github.com/bepinex/BepInEx/releases/download/v{}", config.proxy_url, version),
         false => format!("https://builds.bepinex.dev/projects/bepinex_be/{}", version),
@@ -65,9 +64,9 @@ pub async fn download_bepinex<'a>(app: &tauri::AppHandle, lock_config: StateMute
     };
     let _url = format!("{}/BepInEx-Unity.IL2CPP-win-x86-{}", _url_prefix, _url_postfix);
     let path = app.path().resolve(format!("BepInEx-{}.zip", version), BaseDirectory::Temp).unwrap();
-    let unzip_dir = &get_bepinex_dir(app).join(version);
-    let dotnet_path = get_bepinex_dotnet_dir(app);
-    let doorstop_path = get_doorstop_path(app);
+    let unzip_dir = &get_bepinex_dir(&app).join(version);
+    let dotnet_path = get_bepinex_dotnet_dir(&app);
+    let doorstop_path = get_doorstop_path(&app);
 
     if path.exists() || unzip_dir.exists() {
         return Ok(());
