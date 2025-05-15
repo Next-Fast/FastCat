@@ -40,7 +40,7 @@
       "wix": null
     },
     "resources": [
-      "../Resource/Json/*.json"
+      "Json/*.json"
     ],
     "icon": [
       "../public/icons/icon.ico",

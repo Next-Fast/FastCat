@@ -94,11 +94,10 @@ async function CopyFile()
         fromPathBaseDir: BaseDirectory.Resource,
         toPathBaseDir: BaseDirectory.AppData
     }
-    var PreFix = "_up_/Resource/";
-    await copyFile(PreFix + "Json/version.json", "version.json", option);
-    await copyFile(PreFix + "Json/Mods.json", "Mods.json", option);
-    await copyFile(PreFix + "Json/Bepinex.json", "Bepinex.json", option);
-    await copyFile(PreFix + "Json/GameHash.json", "GameHash.json", option);
+    await copyFile("Json/version.json", "version.json", option);
+    await copyFile("Json/Mods.json", "Mods.json", option);
+    await copyFile("Json/Bepinex.json", "Bepinex.json", option);
+    await copyFile("Json/GameHash.json", "GameHash.json", option);
     console.log("复制文件成功");
 }
 

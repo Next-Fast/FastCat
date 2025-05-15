@@ -1,5 +1,4 @@
 import { defineConfig, UserConfig } from "vite";
-/* import react from "@vitejs/plugin-react"; */
 import swcReact from "@vitejs/plugin-react-swc";
 import AutoImport from 'unplugin-auto-import/vite'
 import svgr from "vite-plugin-svgr";
@@ -41,13 +40,6 @@ export default defineConfig(async () => {
     },
     plugins:
       [
-        /*     react(
-              {
-                babel: {
-                  plugins: ['babel-plugin-react-compiler']
-                }
-              }
-            ), */
         sassDts({ 
           esmExport: true, 
           enabledMode: ['development'],
