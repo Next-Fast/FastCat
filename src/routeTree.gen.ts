@@ -8,179 +8,182 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-// Import Routes
+import { Route as rootRouteImport } from './routes/__root'
+import { Route as SettingRouteImport } from './routes/setting'
+import { Route as ModsRouteImport } from './routes/mods'
+import { Route as IndexRouteImport } from './routes/index'
+import { Route as ExtensionIndexRouteImport } from './routes/extension/index'
+import { Route as ExtensionToolBoxRouteImport } from './routes/extension/ToolBox'
+import { Route as ExtensionServerEditRouteImport } from './routes/extension/ServerEdit'
+import { Route as ExtensionAccountManagerRouteImport } from './routes/extension/AccountManager'
 
-import { Route as rootRoute } from './routes/__root'
-import { Route as SettingImport } from './routes/setting'
-import { Route as ModsImport } from './routes/mods'
-import { Route as IndexImport } from './routes/index'
-import { Route as ExtensionIndexImport } from './routes/extension/index'
-import { Route as ExtensionServerEditImport } from './routes/extension/ServerEdit'
-
-// Create/Update Routes
-
-const SettingRoute = SettingImport.update({
+const SettingRoute = SettingRouteImport.update({
   id: '/setting',
   path: '/setting',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const ModsRoute = ModsImport.update({
+const ModsRoute = ModsRouteImport.update({
   id: '/mods',
   path: '/mods',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const IndexRoute = IndexImport.update({
+const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const ExtensionIndexRoute = ExtensionIndexImport.update({
+const ExtensionIndexRoute = ExtensionIndexRouteImport.update({
   id: '/extension/',
   path: '/extension/',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const ExtensionServerEditRoute = ExtensionServerEditImport.update({
+const ExtensionToolBoxRoute = ExtensionToolBoxRouteImport.update({
+  id: '/extension/ToolBox',
+  path: '/extension/ToolBox',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExtensionServerEditRoute = ExtensionServerEditRouteImport.update({
   id: '/extension/ServerEdit',
   path: '/extension/ServerEdit',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-// Populate the FileRoutesByPath interface
-
-declare module '@tanstack/react-router' {
-  interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexImport
-      parentRoute: typeof rootRoute
-    }
-    '/mods': {
-      id: '/mods'
-      path: '/mods'
-      fullPath: '/mods'
-      preLoaderRoute: typeof ModsImport
-      parentRoute: typeof rootRoute
-    }
-    '/setting': {
-      id: '/setting'
-      path: '/setting'
-      fullPath: '/setting'
-      preLoaderRoute: typeof SettingImport
-      parentRoute: typeof rootRoute
-    }
-    '/extension/ServerEdit': {
-      id: '/extension/ServerEdit'
-      path: '/extension/ServerEdit'
-      fullPath: '/extension/ServerEdit'
-      preLoaderRoute: typeof ExtensionServerEditImport
-      parentRoute: typeof rootRoute
-    }
-    '/extension/': {
-      id: '/extension/'
-      path: '/extension'
-      fullPath: '/extension'
-      preLoaderRoute: typeof ExtensionIndexImport
-      parentRoute: typeof rootRoute
-    }
-  }
-}
-
-// Create and export the route tree
+const ExtensionAccountManagerRoute = ExtensionAccountManagerRouteImport.update({
+  id: '/extension/AccountManager',
+  path: '/extension/AccountManager',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/mods': typeof ModsRoute
   '/setting': typeof SettingRoute
+  '/extension/AccountManager': typeof ExtensionAccountManagerRoute
   '/extension/ServerEdit': typeof ExtensionServerEditRoute
+  '/extension/ToolBox': typeof ExtensionToolBoxRoute
   '/extension': typeof ExtensionIndexRoute
 }
-
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/mods': typeof ModsRoute
   '/setting': typeof SettingRoute
+  '/extension/AccountManager': typeof ExtensionAccountManagerRoute
   '/extension/ServerEdit': typeof ExtensionServerEditRoute
+  '/extension/ToolBox': typeof ExtensionToolBoxRoute
   '/extension': typeof ExtensionIndexRoute
 }
-
 export interface FileRoutesById {
-  __root__: typeof rootRoute
+  __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/mods': typeof ModsRoute
   '/setting': typeof SettingRoute
+  '/extension/AccountManager': typeof ExtensionAccountManagerRoute
   '/extension/ServerEdit': typeof ExtensionServerEditRoute
+  '/extension/ToolBox': typeof ExtensionToolBoxRoute
   '/extension/': typeof ExtensionIndexRoute
 }
-
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/mods' | '/setting' | '/extension/ServerEdit' | '/extension'
+  fullPaths:
+    | '/'
+    | '/mods'
+    | '/setting'
+    | '/extension/AccountManager'
+    | '/extension/ServerEdit'
+    | '/extension/ToolBox'
+    | '/extension'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/mods' | '/setting' | '/extension/ServerEdit' | '/extension'
+  to:
+    | '/'
+    | '/mods'
+    | '/setting'
+    | '/extension/AccountManager'
+    | '/extension/ServerEdit'
+    | '/extension/ToolBox'
+    | '/extension'
   id:
     | '__root__'
     | '/'
     | '/mods'
     | '/setting'
+    | '/extension/AccountManager'
     | '/extension/ServerEdit'
+    | '/extension/ToolBox'
     | '/extension/'
   fileRoutesById: FileRoutesById
 }
-
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ModsRoute: typeof ModsRoute
   SettingRoute: typeof SettingRoute
+  ExtensionAccountManagerRoute: typeof ExtensionAccountManagerRoute
   ExtensionServerEditRoute: typeof ExtensionServerEditRoute
+  ExtensionToolBoxRoute: typeof ExtensionToolBoxRoute
   ExtensionIndexRoute: typeof ExtensionIndexRoute
+}
+
+declare module '@tanstack/react-router' {
+  interface FileRoutesByPath {
+    '/setting': {
+      id: '/setting'
+      path: '/setting'
+      fullPath: '/setting'
+      preLoaderRoute: typeof SettingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mods': {
+      id: '/mods'
+      path: '/mods'
+      fullPath: '/mods'
+      preLoaderRoute: typeof ModsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/extension/': {
+      id: '/extension/'
+      path: '/extension'
+      fullPath: '/extension'
+      preLoaderRoute: typeof ExtensionIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/extension/ToolBox': {
+      id: '/extension/ToolBox'
+      path: '/extension/ToolBox'
+      fullPath: '/extension/ToolBox'
+      preLoaderRoute: typeof ExtensionToolBoxRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/extension/ServerEdit': {
+      id: '/extension/ServerEdit'
+      path: '/extension/ServerEdit'
+      fullPath: '/extension/ServerEdit'
+      preLoaderRoute: typeof ExtensionServerEditRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/extension/AccountManager': {
+      id: '/extension/AccountManager'
+      path: '/extension/AccountManager'
+      fullPath: '/extension/AccountManager'
+      preLoaderRoute: typeof ExtensionAccountManagerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+  }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ModsRoute: ModsRoute,
   SettingRoute: SettingRoute,
+  ExtensionAccountManagerRoute: ExtensionAccountManagerRoute,
   ExtensionServerEditRoute: ExtensionServerEditRoute,
+  ExtensionToolBoxRoute: ExtensionToolBoxRoute,
   ExtensionIndexRoute: ExtensionIndexRoute,
 }
-
-export const routeTree = rootRoute
+export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-/* ROUTE_MANIFEST_START
-{
-  "routes": {
-    "__root__": {
-      "filePath": "__root.tsx",
-      "children": [
-        "/",
-        "/mods",
-        "/setting",
-        "/extension/ServerEdit",
-        "/extension/"
-      ]
-    },
-    "/": {
-      "filePath": "index.tsx"
-    },
-    "/mods": {
-      "filePath": "mods.tsx"
-    },
-    "/setting": {
-      "filePath": "setting.tsx"
-    },
-    "/extension/ServerEdit": {
-      "filePath": "extension/ServerEdit.tsx"
-    },
-    "/extension/": {
-      "filePath": "extension/index.tsx"
-    }
-  }
-}
-ROUTE_MANIFEST_END */

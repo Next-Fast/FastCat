@@ -25,17 +25,20 @@ pub fn run() {
         .invoke_handler(tauri::generate_handler![
             config::commands::get_config,
             config::commands::set_config,
-            config::commands::set_proxy_url,
+            config::commands::set_proxy,
             config::commands::has_bepinex,
-            config::commands::region_config_path,
             config::commands::launch_game,
             config::commands::get_lang,
             config::commands::has_exe,
+            config::commands::bep_in_ex_version,
             utils::commands::open_dir,
             utils::commands::get_github_version,
             utils::commands::get_local_version,
             utils::commands::get_ping_latest,
             utils::commands::download_bepinex,
+            utils::commands::get_announcement_latest,
+            utils::commands::get_region_config,
+            utils::commands::set_region_config
         ])
         .setup(|app| {
             let handle = app.handle().clone();

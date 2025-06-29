@@ -7,10 +7,11 @@ import { createFileRoute } from '@tanstack/react-router'
 import { atom, useAtom } from 'jotai'
 import { Button as ShadcnButton } from '@components/shadcn/ui/button'
 import { MdFolder, MdOutlineArrowBackIos, MdOutlineArrowForwardIos } from 'react-icons/md'
-import { useGetConfig, useHasBepInEx } from '@/lib/hooks/use-swr-tauri'
+import { useAnnouncementLatest, useGetConfig, useHasBepInEx } from '@/lib/hooks/use-swr-tauri'
 import { open } from '@tauri-apps/plugin-dialog'
 import { launch_game, set_config } from '@/lib/utils/tarui-utlis'
 import { ManagerConfig } from '@/lib/Types'
+import { AnnouncementCard } from '@/components/AnnouncementCard';
 
 export const Route = createFileRoute('/')({
   component: RouteComponent,
@@ -59,6 +60,8 @@ function RouteComponent() {
 
   return(
     <PageLayout props={_props}>
+      <AnnouncementCard/>
+
       <div className='game_lancher_Content flex flex-col-reverse items-center justify-center fixed bottom-[3.8rem] right-[3.5rem]'>
         <ButtonGroup size='lg' color="primary" className='h-[3rem] font-bold' >
           <Button className='w-[10rem]' onPress={async () => await StartGame(isVanild)}>

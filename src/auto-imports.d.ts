@@ -7,6 +7,7 @@
 export {}
 declare global {
   const AnimeOutlet: typeof import('./components/AnimeOutlet')['AnimeOutlet']
+  const AnnouncementCard: typeof import('./components/AnnouncementCard')['AnnouncementCard']
   const ErrorFallback: typeof import('./components/ErrorFallback')['ErrorFallback']
   const ModsDetail: typeof import('./components/ModsDetail')['ModsDetail']
   const ModsList: typeof import('./components/ModsList')['ModsList']

@@ -1,23 +1,61 @@
 {
+  "Announcement": "公告",
+  "NoInstall": "未安装",
+  "Installed": "已安装",
   "Home": {
     "title": "主页",
     "StartVanild": "启动原版",
     "StartModed": "启动模组"
   },
   "Mods": {
-    "title": "模组"
+    "title": "模组",
+    "BepInEx": {
+      "Description": "用于基于Unity IL2CPP游戏的模组加载器。",
+      "Version": "版本: {{version}}",
+      "Status": "状态: {{status}}",
+      "Download": "下载",
+      "Configure": "配置",
+      "SingleModeStatus": "单实例模式：{{status}}",
+      "SingleMode": "单实例:"
+    }
   },
   "Extensions": {
-    "title": "扩展"
+    "title": "扩展",
+    "goto": "前往",
+    "NoDescription": "没有描述。"
+  },
+  "Extension": {
+    "ServerEdit": {
+      "title": "服务器编辑",
+      "description": "编辑管理服务器列表。",
+      "NoConfig": "未能找到服务器配置文件。。"
+    },
+    "AccountManager": {
+      "title": "账户管理",
+      "description": "管理Steam账户或Epic账号下载AU。"
+    },
+    "ToolBox": {
+      "title": "工具箱",
+      "description": "提供一些实用的工具和功能。"
+    }
   },
   "Setting": {
     "title": "设置",
     "Language": "语言",
     "SelectLanguage": "选择您的语言",
-    "SelectProxy": "请选择Github下载源"
+    "SelectProxy": "请选择Github下载源",
+    "Setting.NoConfig": "没有配置文件",
+    "NoConfig": "未能加载配置。。。",
+    "Tab": {
+      "General": "常规",
+      "Advanced": "高级"
+    }
   },
   "Language": {
     "zh": "中文",
     "en": "英文"
-  }
+  },
+  "Close": "关闭",
+  "Enabled": "启用",
+  "Disabled": "禁用"
 }

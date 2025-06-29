@@ -9,6 +9,9 @@ interface MenuItem {
     i18Key?: string
 }
 
+export interface ExtensionMenuItem extends MenuItem {
+    description?: string
+}
 
 export const DefaultMenuItems: MenuItem[] = [
     {
@@ -37,11 +40,23 @@ export const DefaultMenuItems: MenuItem[] = [
     }
 ]
 
-export const ExtensionMenuItems: MenuItem[] = [
+export const ExtensionMenuItems: ExtensionMenuItem[] = [
     {
         name: 'ServerEdit',
         url: '/extension/ServerEdit',
         icon: MdOutlineExtension,
-        i18Key: 'Extension.ServerEdit.title'
+        i18Key: 'Extension.ServerEdit',
+    },
+    {
+        name: 'ToolBox',
+        url: '/extension/ToolBox',
+        icon: MdOutlineExtension,
+        i18Key: 'Extension.ToolBox',
+    },
+    {
+        name: 'AccountManager',
+        url: '/extension/AccountManager',
+        icon: MdOutlineExtension,
+        i18Key: 'Extension.AccountManager',
     }
 ]

@@ -101,13 +101,18 @@ async function CopyFile()
     console.log("复制文件成功");
 }
 
+let HasChecked = false;
 export function start() {
     if (!Is_Tauri)
         return;
-    
+
+    if (HasChecked)
+        return;
+
     try 
     {
         start_async();
+        HasChecked = true;
     }
     catch (error)
     {

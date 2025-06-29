@@ -72,6 +72,15 @@ pub fn get_mods_dir(app : &AppHandle) -> PathBuf {
     path
 }
 
+pub fn get_instance_path(app : &AppHandle) -> PathBuf {
+    let path = app
+            .path()
+            .resolve("Instance", BaseDirectory::AppData)
+            .unwrap();
+
+    path
+}
+
 #[allow(non_snake_case)]
 pub fn get_LocalLow_path() -> PathBuf {
     dirs::home_dir()

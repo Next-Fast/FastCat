@@ -27,7 +27,6 @@
     "fs:allow-config-write-recursive",
     "fs:allow-resource-read-recursive",
     "core:resources:default",
-    "http:default",
-    "deep-link:default"
+    "http:default"
   ]
 }

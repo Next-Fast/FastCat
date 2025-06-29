@@ -1,17 +1,16 @@
-import { GameConfig, InfoVersion, ManagerConfig, SuprrortLanguage } from "../Types"
+import { AnnouncementResponse, GameConfig, InfoVersion, ManagerConfig, SuprrortLanguage } from "../Types"
 import { Invoke_Command } from "../utils";
 
 export const set_config = async (
     _lang : SuprrortLanguage | undefined = undefined, 
-    _game : GameConfig | undefined = undefined,
-    _proxy : string | undefined = undefined
+    _game : GameConfig | undefined = undefined
 ) => {
     var set_lang = _lang ? _lang : "";
-    await Invoke_Command("set_config", { lang : set_lang, game : _game, proxy : _proxy });
+    await Invoke_Command("set_config", { lang : set_lang, game : _game });
 }
 
-export const set_proxy_url = async (proxy : string) => {
-    await Invoke_Command("set_proxy_url", { url : proxy });
+export const set_proxy = async (_name : string, _proxy : string) => {
+    await Invoke_Command("set_proxy", { name : _name, proxy : _proxy });
 }
 
 export const get_config = async () => {
@@ -20,10 +19,6 @@ export const get_config = async () => {
 
 export const has_bepinex = async () => {
     return await Invoke_Command<boolean>("has_bepinex");
-}
-
-export const region_config_path = async () => {
-    return await Invoke_Command<string>("region_config_path");
 }
 
 export const launch_game = async (is_Moded : boolean) => {
@@ -54,4 +49,20 @@ export const get_ping_latest = async (all : string[]) => {
 
 export const download_bepinex = async (Version : string, Release : boolean, Hash : string) => {
     await Invoke_Command("download_bepinex", { version : Version, is_release : Release, hash : Hash });
+}
+
+export const bep_in_ex_version = async () => {
+    return await Invoke_Command<string>("bep_in_ex_version");
+}
+
+export const get_announcement_latest = async () => {
+    return await Invoke_Command<AnnouncementResponse>("get_announcement_latest");
+}
+
+export const get_region_config = async () => {
+    return await Invoke_Command<string>("get_region_config");
+}
+
+export const set_region_config = async (config: string) => {
+    await Invoke_Command("set_region_config", { content : config });
 }

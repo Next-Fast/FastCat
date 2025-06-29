@@ -15,6 +15,8 @@ export const set_language = async (lang: SuprrortLanguage) => {
     await set_config(lang);
 }
 
+
+
 i18n.use(initReactI18next)
     .init({
         resources: languageResource,

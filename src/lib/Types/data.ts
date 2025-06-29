@@ -45,3 +45,8 @@ export class DefaultBepInExInfo implements BepInExInfo {
     BuildId?: string | undefined;
     BuildHash?: string | undefined;
 }
+
+export interface AnnouncementResponse {
+    has_new: boolean,
+    announcement: string,
+}

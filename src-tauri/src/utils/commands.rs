@@ -1,12 +1,13 @@
 use std::{fs::{create_dir_all, File}, io::{self, Read, Seek, Write}, path::PathBuf, sync::Arc, time::Duration};
 
 use eyre::Context;
+use serde::Serialize;
 use tauri::{path::BaseDirectory, AppHandle, Manager};
 
 use tauri_plugin_http::reqwest;
 use zip::ZipArchive;
 
-use crate::config::ManagerConfig;
+use crate::{config::ManagerConfig, utils::pathget::get_LocalLow_path};
 
 use super::{pathget::{get_bepinex_dir, get_bepinex_dotnet_dir, get_doorstop_path, get_dotnet_dir}, InfoVersion, StateMutex};
 
@@ -183,4 +184,88 @@ pub async fn get_ping_latest(urls : Vec<String>) -> Result<String, String> {
     }
 
     Ok(latest_url)
+}
+
+
+
+pub async fn get_announcement_info(proxy : Option<String>) -> Result<String, String> {
+    let url = if let Some(proxy) = proxy {
+        format!("{}{}", proxy, "https://raw.githubusercontent.com/Next-Fast/ModList/main/announcement.json")
+    }
+    else {
+        "https://raw.githubusercontent.com/Next-Fast/ModList/main/announcement.json".to_string()
+    };
+    let response = reqwest::get(url).await.context("Failed to get announcement").map_err(|e| e.to_string())?;
+    let content = response.text().await.context("Failed to get announcement content").map_err(|e| e.to_string())?;
+    Ok(content)
+}
+
+#[derive(Serialize)]
+pub struct AnnouncementResponse {
+    has_new: bool,
+    announcement: String,
+}
+
+#[tauri::command]
+pub async fn get_announcement_latest<'a>(app: AppHandle, lock_config: StateMutex<'a, ManagerConfig>) -> Result<AnnouncementResponse, String> {
+    let version = app.config().version.clone();
+    let proxy = {
+        let config = lock_config.lock().unwrap();
+        if config.proxy_url.is_empty() {
+            None
+        } else {
+            Some(config.proxy_url.clone())
+        }
+    };
+
+    let info_str = get_announcement_info(proxy).await?;
+    let info: serde_json::Value = serde_json::from_str(&info_str).map_err(|e| e.to_string())?;
+
+    match (info.get("version").and_then(|v| v.as_str()), info.get("announcement").and_then(|a| a.as_str())) {
+        (Some(latest_version), Some(announcement)) => {
+            if Some(latest_version) == version.as_deref() {
+                Ok(AnnouncementResponse {
+                    has_new: false,
+                    announcement: "No new announcements".to_string(),
+                })
+            } else {
+                Ok(AnnouncementResponse {
+                    has_new: true,
+                    announcement: announcement.to_string(),
+                })
+            }
+        }
+        (Some(_), None) => Err("Failed to get announcement".to_string()),
+        (None, _) => Err("Failed to get latest version".to_string()),
+    }
+}
+
+pub fn region_config_path() -> PathBuf {
+    let mut path = get_LocalLow_path();
+    path.push("regionInfo.json");
+    path
+}
+
+#[tauri::command]
+pub fn get_region_config() -> Result<String, String> {
+    let path = region_config_path();
+    if !path.exists() {
+        return Ok(String::new());
+    }
+    let mut file = File::open(&path).map_err(|e| e.to_string())?;
+    let mut content = String::new();
+    file.read_to_string(&mut content).map_err(|e| e.to_string())?;
+    Ok(content)
+}
+
+#[tauri::command]
+pub fn set_region_config(content: String) -> Result<(), String> {
+    let path = region_config_path();
+    if let Some(parent) = path.parent() {
+        create_dir_all(parent).map_err(|e| e.to_string())?;
+    }
+    let mut file = File::create(&path).map_err(|e| e.to_string())?;
+    file.write_all(content.as_bytes()).map_err(|e| e.to_string())?;
+    file.flush().map_err(|e| e.to_string())?;
+    Ok(())
 }

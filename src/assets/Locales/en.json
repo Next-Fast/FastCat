@@ -1,24 +1,31 @@
 {
-    "Home":
-    {
-        "title": "Home",
-        "StartVanild": "Start Vanilla",
-        "StartModed": "Start Modded"
-    },
-    "Mods": {
-        "title": "Mods"
-    },
-    "Extensions": {
-        "title": "Extensions"
-    },
-    "Setting":
-    {
-        "title": "Setting",
-        "Language": "Language",
-        "SelectLanguage": "Select Language"
-    },
-    "Language": {
-        "zh": "Chinese",
-        "en": "English"
+  "Home": {
+    "title": "Home",
+    "StartVanild": "Start Vanilla",
+    "StartModed": "Start Modded"
+  },
+  "Mods": {
+    "title": "Mods",
+    "BepInEx": {
+      "Status": {
+        "True": "状态:已安装"
+      },
+      "Version": "Version:{version}",
+      "Description": "Mod loader for Unity IL2CPP based games."
     }
+  },
+  "Extensions": {
+    "title": "Extensions",
+    "NoDescription": "No description."
+  },
+  "Setting": {
+    "title": "Setting",
+    "Language": "Language",
+    "SelectLanguage": "Select Language",
+    "SelectProxy": "Select Github Proxy"
+  },
+  "Language": {
+    "zh": "Chinese",
+    "en": "English"
+  }
 }

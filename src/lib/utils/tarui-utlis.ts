@@ -5,8 +5,9 @@ import { invoke, InvokeArgs, InvokeOptions } from "@tauri-apps/api/core";
 import { Is_Tauri } from "../../AppEnv";
 
 export type Tauri_Command = 
-    "set_config" | "get_config" | "set_proxy_url" | "has_bepinex" | "region_config_path" | "launch_game" | "get_lang" |
-    "open_dir" | "get_github_version" | "get_local_version" | "get_ping_latest" | "download_bepinex"
+    "set_config" | "get_config" | "set_proxy" | "has_bepinex" | "launch_game" | "get_lang" |
+    "open_dir" | "get_github_version" | "get_local_version" | "get_ping_latest" | "download_bepinex" | "bep_in_ex_version" |
+    "get_announcement_latest" | "get_region_config" | "set_region_config"
 ;
 
 export async function Invoke_Command<T>(command : Tauri_Command, args? : InvokeArgs, options? : InvokeOptions) : Promise<T | undefined>

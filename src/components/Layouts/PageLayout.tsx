@@ -1,10 +1,11 @@
 import clsx from 'clsx'
-import { Image } from "@heroui/react"
+import { Image, Tooltip } from "@heroui/react"
 import { cn } from '@/lib/utils';
 
 export interface PageLayoutProps {
     title : string,
     image? : string,
+    description? : string,
 }
 
 function ImageContainer({ image }: { image: string | undefined }) {
@@ -27,8 +28,12 @@ export function PageLayout({ props, children, className }: { props: PageLayoutPr
 
     return (
         <div className="Page Layout flex flex-col">
-            <header className="Page Header">
-                <h1 className="font-sans text-3xl mt-4 ml-7">{t(props.title)}</h1>
+            <header className="Page Header flex flex-col items-start justify-center">
+                {props.description ? (
+                    <Tooltip content={t(props.description)} delay={250} closeDelay={0} color='foreground' className='opacity-[60%]'>
+                        <h1 className="font-sans text-3xl mt-4 ml-5">{t(props.title)}</h1>
+                    </Tooltip>
+                ) : (<h1 className="font-sans text-3xl mt-4 ml-5">{t(props.title)}</h1>)}
             </header>
 
             <div className={clsx('Page Main relative rounded-3xl ml-3 mt-1 w-[95%] h-[31.35rem]',

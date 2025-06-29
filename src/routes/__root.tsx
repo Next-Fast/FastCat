@@ -1,10 +1,12 @@
-import { TanStackRouterDevtools/* , UseMainLayoutPaths  */} from '@/lib/utils/route-utils'
-import { NavigateOptions, ToOptions, createRootRoute, /* useLocation, */ useRouter } from '@tanstack/react-router'
+import { TanStackRouterDevtools } from '@/lib/utils/route-utils'
+import type { NavigateOptions, ToOptions } from '@tanstack/react-router';
+import { createRootRoute,  Outlet,  useRouter } from '@tanstack/react-router'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { SWRConfig } from 'swr'
 import { HeroUIProvider } from "@heroui/react"
 import { MainLayout } from '@/components/Layouts/MainLayout'
-import { AnimeOutlet } from '@/components/AnimeOutlet'
+import { useGetConfig } from '@/lib/hooks/use-swr-tauri'
+import { RouterConfig } from '@react-types/shared';
 
 const queryClient = new QueryClient();
 
@@ -21,26 +23,22 @@ export const Route = createRootRoute({
 
 function RootComponent() {
   const router = useRouter();
-/*   const path = useLocation().pathname; */
-  const Layout = /* UseMainLayoutPaths.
-                  findLast(item => path.startsWith(item.path))?.element
-                  ??  */
-                  MainLayout;
-/*   
-  const ExComponents : FC[] = []; */
+  const lang = useGetConfig().data?.lang ?? "en";
+  const langCode = lang === "zh" ? "zh-CN" : "en-US";
 
   return (
     <> 
       <QueryClientProvider client={queryClient}>
         <SWRConfig>
           <HeroUIProvider 
-            navigate={(to, options) => router.navigate({ to, ...options })}
+            locale={langCode}
+            navigate={(to, options : RouterConfig | undefined) => router.navigate({ to, ...options })}
             useHref={(to) => router.buildLocation({ to }).href}
             className='light'
           >
-            <Layout>
-              <AnimeOutlet />
-            </Layout>
+            <MainLayout>
+              <Outlet/>
+            </MainLayout>
 {/* 
             {
               ExComponents.map((Component, index) => <Component key={index} />)

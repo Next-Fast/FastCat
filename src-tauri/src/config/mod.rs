@@ -42,6 +42,7 @@ pub struct GameConfig {
     dir_path: PathBuf,
     #[serde(rename = "Loader")]
     loader: LoaderType,
+    #[serde(rename = "LoaderVersion")]
     loader_version: String,
 }
 
@@ -159,11 +160,13 @@ impl GameConfig {
                 let mut splits = frist.split(" ");
                 // 获取第4个元素
                 if let Some(version) = splits.nth(3) {
-                    return version.to_owned();
+                    let ver = version.to_owned();
+                    self.loader_version = ver.clone();
+                    return ver;
                 }
             }
         }
 
-        "".to_owned()
+        "Unkown".to_owned()
     }
 }

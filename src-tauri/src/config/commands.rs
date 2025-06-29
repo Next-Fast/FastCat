@@ -16,7 +16,6 @@ pub fn get_config(config: StateMutex<ManagerConfig>) -> ManagerConfig {
 pub fn set_config(
     lang: String,
     game: Option<GameConfig>,
-    proxy: Option<String>,
     config: StateMutex<ManagerConfig>,
     app: AppHandle,
 ) {
@@ -30,15 +29,11 @@ pub fn set_config(
         local.set_game_config(game);
     }
 
-    if let Some(proxy) = proxy {
-        local.set_proxy(proxy);
-    }
-
     local.save(&app);
 }
 
 #[tauri::command]
-pub fn set_proxy_url(url : String, config: StateMutex<ManagerConfig>, app: AppHandle) {
+pub fn set_proxy(name : String, url : String, config: StateMutex<ManagerConfig>, app: AppHandle) {
     let mut local = config.lock().unwrap();
     let set_url;
     if url != "" {
@@ -47,7 +42,8 @@ pub fn set_proxy_url(url : String, config: StateMutex<ManagerConfig>, app: AppHa
     else {
         set_url = "".to_string();
     }
-    
+
+    local.set_proxy(name);
     local.set_proxy_url(set_url);
     local.save(&app);
 }
@@ -57,17 +53,6 @@ pub fn has_bepinex(config: StateMutex<ManagerConfig>) -> bool {
     config.lock().unwrap().game_config.has_bepinex()
 }
 
-#[tauri::command]
-pub fn region_config_path() -> String {
-    let mut path = get_LocalLow_path();
-    path.push("regionInfo.json");
-
-    if !path.exists() {
-        "".to_string()
-    } else {
-        path.to_str().unwrap().to_string()
-    }
-}
 
 #[tauri::command]
 pub async fn launch_game<'a>(
@@ -139,4 +124,9 @@ pub fn get_lang(config: StateMutex<ManagerConfig>) -> String {
 #[tauri::command]
 pub fn has_exe(config: StateMutex<ManagerConfig>) -> bool {
     config.lock().unwrap().game_config.exe_path().exists()
+}
+
+#[tauri::command]
+pub fn bep_in_ex_version(config: StateMutex<ManagerConfig>) -> String {
+    config.lock().unwrap().game_config.BepInEx_Version()
 }

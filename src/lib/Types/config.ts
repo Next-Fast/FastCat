@@ -9,6 +9,7 @@ export type ManagerConfig = {
 export type GameConfig = {
     Loader: LoaderType,
     DirPath: string,
+    LoaderVersion: string,
 }
 
 
